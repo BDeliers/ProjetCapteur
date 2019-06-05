@@ -1,0 +1,22 @@
+___awdiv: CODE, 62866 0 144
+__stringdata: MEDIUMCONST, 64484 0 1051
+_ReadSXRegister: CODE, 62172 0 36
+_ResetRFModule: CODE, 62208 0 40
+___awmod: CODE, 62612 0 124
+_main: CODE, 63760 0 724
+_AntennaRX: CODE, 62088 0 24
+_InitRFLoRaPins: CODE, 62038 0 12
+__initialization: CODE, 62028 0 0
+_UARTWriteByteDec: CODE, 62736 0 130
+_GetMode: CODE, 63010 0 268
+_UARTWriteStr: CODE, 62304 0 82
+_UARTWriteByte: CODE, 62018 0 10
+_UARTWriteByteHex: CODE, 62492 0 120
+_SPITransfer: CODE, 62050 0 16
+_UARTInit: CODE, 62248 0 56
+_SPIReceive: CODE, 62066 0 22
+_UARTWriteStrLn: CODE, 62386 0 106
+_SPIInit: CODE, 62140 0 32
+_InitModule: CODE, 63278 0 482
+_WriteSXRegister: CODE, 62112 0 28
+Total: 3507
