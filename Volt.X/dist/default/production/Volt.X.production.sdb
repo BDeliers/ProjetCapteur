@@ -1,0 +1,347 @@
+[p LITE_MODE AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F26K22 ]
+[d frameptr 4065 ]
+"7 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"7 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"4 /opt/microchip/xc8/v2.00/pic/sources/c99/common/fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 /opt/microchip/xc8/v2.00/pic/sources/c99/common/float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 /opt/microchip/xc8/v2.00/pic/sources/c99/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 /opt/microchip/xc8/v2.00/pic/sources/c99/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 /opt/microchip/xc8/v2.00/pic/sources/c99/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 /opt/microchip/xc8/v2.00/pic/sources/c99/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"10 /opt/microchip/xc8/v2.00/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 /opt/microchip/xc8/v2.00/pic/sources/c99/common/sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 /opt/microchip/xc8/v2.00/pic/sources/c99/common/sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 /opt/microchip/xc8/v2.00/pic/sources/c99/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 /opt/microchip/xc8/v2.00/pic/sources/c99/common/Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"85 /home/julie/MEGA/CIR3/Projet_fin/C_PIC18/Volt.X/main.c
+[v _main main `(i  1 e 2 0 ]
+"16 /home/julie/MEGA/CIR3/Projet_fin/C_PIC18/Volt.X/uart.c
+[v _UARTInit UARTInit `(v  1 e 1 0 ]
+"52
+[v _UARTWriteByte UARTWriteByte `(v  1 e 1 0 ]
+"93
+[v _UARTWriteByteDec UARTWriteByteDec `(v  1 e 1 0 ]
+"7 /home/julie/MEGA/CIR3/Projet_fin/C_PIC18/Volt.X/volt.c
+[v _readVoltage readVoltage `(uc  1 e 1 0 ]
+"24
+[v _toPercentage toPercentage `(uc  1 e 1 0 ]
+[s S460 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+"67 /opt/microchip/xc8/v2.00/pic/include/pic18f26k22.h
+[u S467 . 1 `S460 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES467  1 e 1 @3896 ]
+[s S96 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ANSC2 1 0 :1:2 
+`uc 1 ANSC3 1 0 :1:3 
+`uc 1 ANSC4 1 0 :1:4 
+`uc 1 ANSC5 1 0 :1:5 
+`uc 1 ANSC6 1 0 :1:6 
+`uc 1 ANSC7 1 0 :1:7 
+]
+"163
+[u S104 . 1 `S96 1 . 1 0 ]
+[v _ANSELCbits ANSELCbits `VES104  1 e 1 @3898 ]
+[s S420 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"7612
+[s S429 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S438 . 1 `S420 1 . 1 0 `S429 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES438  1 e 1 @3986 ]
+[s S56 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"8056
+[s S65 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S74 . 1 `S56 1 . 1 0 `S65 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES74  1 e 1 @3988 ]
+[s S236 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TX1IE 1 0 :1:4 
+`uc 1 RC1IE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+]
+"8639
+[s S244 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+]
+[u S249 . 1 `S236 1 . 1 0 `S244 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES249  1 e 1 @3997 ]
+"9582
+[v _RCSTA1 RCSTA1 `VEuc  1 e 1 @4011 ]
+[s S166 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"9635
+[s S175 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S178 . 1 `uc 1 RX9D1 1 0 :1:0 
+`uc 1 OERR1 1 0 :1:1 
+`uc 1 FERR1 1 0 :1:2 
+`uc 1 ADDEN1 1 0 :1:3 
+`uc 1 CREN1 1 0 :1:4 
+`uc 1 SREN1 1 0 :1:5 
+`uc 1 RX91 1 0 :1:6 
+`uc 1 SPEN1 1 0 :1:7 
+]
+[s S187 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S191 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S194 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[u S197 . 1 `S166 1 . 1 0 `S175 1 . 1 0 `S178 1 . 1 0 `S187 1 . 1 0 `S191 1 . 1 0 `S194 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES197  1 e 1 @4011 ]
+"10038
+[v _TXSTA1 TXSTA1 `VEuc  1 e 1 @4012 ]
+[s S117 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"10079
+[s S126 . 1 `uc 1 TX9D1 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+`uc 1 BRGH1 1 0 :1:2 
+`uc 1 SENDB1 1 0 :1:3 
+`uc 1 SYNC1 1 0 :1:4 
+`uc 1 TXEN1 1 0 :1:5 
+`uc 1 TX91 1 0 :1:6 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S135 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S139 . 1 `S117 1 . 1 0 `S126 1 . 1 0 `S135 1 . 1 0 ]
+[v _TXSTA1bits TXSTA1bits `VES139  1 e 1 @4012 ]
+"10413
+[v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
+"10491
+[v _RCREG1 RCREG1 `VEuc  1 e 1 @4014 ]
+"10569
+[v _SPBRG1 SPBRG1 `VEuc  1 e 1 @4015 ]
+"10647
+[v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @4016 ]
+[s S266 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 CKTXP 1 0 :1:4 
+`uc 1 DTRXP 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"11675
+[s S275 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SCKP 1 0 :1:4 
+]
+[s S278 . 1 `uc 1 ABDEN1 1 0 :1:0 
+`uc 1 WUE1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG161 1 0 :1:3 
+`uc 1 SCKP1 1 0 :1:4 
+`uc 1 DTRXP1 1 0 :1:5 
+`uc 1 RCIDL1 1 0 :1:6 
+`uc 1 ABDOVF1 1 0 :1:7 
+]
+[s S287 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXCKP 1 0 :1:4 
+`uc 1 RXDTP 1 0 :1:5 
+`uc 1 RCMT 1 0 :1:6 
+]
+[s S292 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXCKP1 1 0 :1:4 
+`uc 1 RXDTP1 1 0 :1:5 
+`uc 1 RCMT1 1 0 :1:6 
+]
+[s S297 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RXCKP 1 0 :1:5 
+]
+[s S300 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 W4E 1 0 :1:1 
+]
+[u S303 . 1 `S266 1 . 1 0 `S275 1 . 1 0 `S278 1 . 1 0 `S287 1 . 1 0 `S292 1 . 1 0 `S297 1 . 1 0 `S300 1 . 1 0 ]
+[v _BAUDCON1bits BAUDCON1bits `VES303  1 e 1 @4024 ]
+"12675
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+"12746
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"12814
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+[s S482 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"12859
+[s S485 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+[s S489 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+[s S497 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S500 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S503 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S506 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S509 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S512 . 1 `S482 1 . 1 0 `S485 1 . 1 0 `S489 1 . 1 0 `S497 1 . 1 0 `S500 1 . 1 0 `S503 1 . 1 0 `S506 1 . 1 0 `S509 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES512  1 e 1 @4034 ]
+"12966
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+"18402
+[v _PEIE PEIE `VEb  1 e 0 @32662 ]
+"18552
+[v _RCIE RCIE `VEb  1 e 0 @31981 ]
+"18555
+[v _RCIF RCIF `VEb  1 e 0 @31989 ]
+"85 /home/julie/MEGA/CIR3/Projet_fin/C_PIC18/Volt.X/main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"95
+} 0
+"24 /home/julie/MEGA/CIR3/Projet_fin/C_PIC18/Volt.X/volt.c
+[v _toPercentage toPercentage `(uc  1 e 1 0 ]
+{
+[v toPercentage@value value `uc  1 a 1 wreg ]
+[v toPercentage@value value `uc  1 a 1 wreg ]
+[v toPercentage@value value `uc  1 a 1 0 ]
+"38
+} 0
+"7
+[v _readVoltage readVoltage `(uc  1 e 1 0 ]
+{
+"22
+} 0
+"93 /home/julie/MEGA/CIR3/Projet_fin/C_PIC18/Volt.X/uart.c
+[v _UARTWriteByteDec UARTWriteByteDec `(v  1 e 1 0 ]
+{
+[v UARTWriteByteDec@data data `uc  1 a 1 wreg ]
+[v UARTWriteByteDec@data data `uc  1 a 1 wreg ]
+"96
+[v UARTWriteByteDec@data data `uc  1 a 1 14 ]
+"102
+} 0
+"7 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"7
+[v ___awmod@dividend dividend `i  1 p 2 0 ]
+[v ___awmod@divisor divisor `i  1 p 2 2 ]
+"34
+} 0
+"7 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 12 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 11 ]
+[v ___awdiv@counter counter `uc  1 a 1 10 ]
+"7
+[v ___awdiv@dividend dividend `i  1 p 2 6 ]
+[v ___awdiv@divisor divisor `i  1 p 2 8 ]
+"41
+} 0
+"52 /home/julie/MEGA/CIR3/Projet_fin/C_PIC18/Volt.X/uart.c
+[v _UARTWriteByte UARTWriteByte `(v  1 e 1 0 ]
+{
+[v UARTWriteByte@data data `uc  1 a 1 wreg ]
+[v UARTWriteByte@data data `uc  1 a 1 wreg ]
+[v UARTWriteByte@data data `uc  1 a 1 0 ]
+"57
+} 0
+"16
+[v _UARTInit UARTInit `(v  1 e 1 0 ]
+{
+[v UARTInit@baudRate baudRate `ui  1 p 2 0 ]
+"50
+} 0
