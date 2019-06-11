@@ -5,7 +5,7 @@
 #include "i2c.h"
 #include "VEML7700.h"
 
-
+// 0x04 to read luminosity, 0x05 to read white light
 UINT16_T readLuminosity(UINT8_T reg) {
     UINT8_T LSB_data;
     UINT8_T MSB_data;
