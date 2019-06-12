@@ -11,38 +11,12 @@ void initTimer(void){
 };
 
 // Function to start a timer during 1, 5, 10, 15, 20, 30, 40, 45, 60 or 67 seconds
-void startTimer(UINT8_T duration) {
-    switch(duration) {
-        case 1:
-            TMR0 = 64557;
-            break;
-        case 5:
-            TMR0 = 60651;
-            break;
-        case 10:
-            TMR0 = 55768;
-            break;
-        case 15:
-            TMR0 = 50885;
-            break;
-        case 20:
-            TMR0 = 46002;
-            break;
-        case 30:
-            TMR0 = 36237;
-            break;
-        case 40:
-            TMR0 = 26471;
-            break;
-        case 45:
-            TMR0 = 21588;
-            break;
-        case 60:
-            TMR0 = 6940;
-            break;
-        default:
-            TMR0 = 0;
-            break;
+void startTimerSec(UINT8_T duration) {
+    if (duration <= 67) {
+        TMR0 = (1/((1000000/4)/256))*(65535-duration);
+    }
+    else {
+        TMR0 = 0;
     }
     
     initTimer();
