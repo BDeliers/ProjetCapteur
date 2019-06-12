@@ -11,13 +11,13 @@ void initTimer(void){
 };
 
 // Function to start a timer during x seconds
-void startTimerSec(UINT8_T duration) {
+void startTimerSec(UINT16_T duration) {
+    initTimer();
+    
     if (duration <= 67) {
-        TMR0 = (1/((1000000/4)/256))*(65535-duration);
+        TMR0 = (UINT16_T) (1/((1000000/4)/256))*(65535-duration);
     }
     else {
         TMR0 = 0;
     }
-    
-    initTimer();
 }
