@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mathi/Documents/projet_elec/FONCTIONNEL/Capteur_luminosite.X/mesure_luminosite.c</file>
-            <file>file:/C:/Users/mathi/Documents/projet_elec/FONCTIONNEL/Capteur_luminosite.X/VEML7700.h</file>
-            <file>file:/C:/Users/mathi/Documents/projet_elec/FONCTIONNEL/Capteur_luminosite.X/uart.c</file>
-            <file>file:/C:/Users/mathi/Documents/projet_elec/FONCTIONNEL/Capteur_luminosite.X/VEML7700.c</file>
+            <file>file:/home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Capteur_luminosite.X/mesure_luminosite.c</file>
+            <file>file:/home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Capteur_luminosite.X/VEML7700.c</file>
+            <file>file:/home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Capteur_luminosite.X/i2c.h</file>
+            <file>file:/home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Capteur_luminosite.X/VEML7700.h</file>
         </group>
     </open-files>
 </project-private>
