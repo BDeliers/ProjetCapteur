@@ -9,7 +9,6 @@
 #define	INIT_TIMER0_H
 
 void initTimer(void);
-void startTimerSec(UINT16_T duration);
+void startTimer(UINT8_T duration);
 
 #endif	/* INIT_TIMER0_H */
-
