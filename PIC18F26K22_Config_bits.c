@@ -16,7 +16,7 @@
 
 // CONFIG2H
 // Watchdog configured to have a 65,536 seconds timer
-#pragma config WDTEN = ON      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+#pragma config WDTEN = 2      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
 #pragma config WDTPS = 16384    // Watchdog Timer Postscale Select bits (1:32768)
 
 // CONFIG3H
