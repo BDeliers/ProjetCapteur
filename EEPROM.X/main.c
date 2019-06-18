@@ -89,11 +89,24 @@ int main(int argc, char** argv){
     
     i2c_init();
     
+    /*/
     eepromWriteFull(0x12,0x12,183);
     
     UINT8_T buff = eepromRead(0x12,0x12);
     
     UARTWriteByteDec(buff);
+    */
+    
+    UARTWriteStrLn("Erasing EEPROM");
+    
+    for(UINT16_T i = 0; i < 0xFFFF; i++) {
+        eepromWriteFull((i >> 8), i & 0xFF, 0);
+    }
+    
+    UARTWriteStrLn("Reading EEPROM");
+    for(UINT16_T i = 0; i < 0xFFFF; i++) {
+        UARTWriteByteDec(eepromRead((i >> 8), i & 0xFF));
+    }
     
     return(EXIT_SUCCESS);
 }

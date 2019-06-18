@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v2.00/pic/dat/en_msgs.txt -cs \
   -h+dist/default/production/EEPROM.X.production.sym \
   --cmf=dist/default/production/EEPROM.X.production.cmf -z -Q18F26K22 \
-  -o/tmp/xcXdO2Pwh --defsym=__MPLAB_BUILD=1 \
+  -o/tmp/xcXWktb9p --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/EEPROM.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=060h-0f37h -pstack=STACK -ACODE=00h-0FFFFh \
   -ACONST=00h-0FFFFh -ASMALLCONST=01000h-010FFhx240 \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcXxhRqd7.o dist/default/production/EEPROM.X.production.o 
+  /tmp/xcXuxoBCv.o dist/default/production/EEPROM.X.production.o 
 
 Object code version is 3.11
 
@@ -38,69 +38,71 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcXxhRqd7.o
+/tmp/xcXuxoBCv.o
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production/EEPROM.X.production.o
-                smallconst                         1000     1000       1E      800       0
-                text18                             1336     1336       36      80F       0
-                text17                             1472     1472       1E      80F       0
-                text16                             101E     101E       EC      80F       0
-                text15                             110A     110A       D8      80F       0
-                text14                             1256     1256       72      80F       0
-                text13                             11E2     11E2       74      80F       0
-                text12                             12C8     12C8       38      80F       0
-                text11                             1434     1434       20      80F       0
-                text10                             13F0     13F0       24      80F       0
-                text9                              14C6     14C6        C      80F       0
-                text8                              1490     1490       1C      80F       0
-                text7                              14BA     14BA        C      80F       0
-                text6                              14D2     14D2        A      80F       0
-                text5                              1454     1454       1E      80F       0
-                text4                              13C4     13C4       2C      80F       0
-                text3                              1414     1414       20      80F       0
-                text2                              1398     1398       2C      80F       0
-                text1                              136C     136C       2C      80F       0
-                text0                              1300     1300       36      80F       0
-                cstackCOMRAM                          1        1       15        1       1
-                cinit                              14AC     14AC        E      80F       0
+                smallconst                         1000     1000       32      800       0
+                text19                             13DC     13DC       36      819       0
+                text18                             1536     1536       1E      819       0
+                text17                             1032     1032       EC      819       0
+                text16                             111E     111E       D8      819       0
+                text15                             1332     1332       72      819       0
+                text14                             12BE     12BE       74      819       0
+                text13                             13A4     13A4       38      819       0
+                text12                             14DA     14DA       20      819       0
+                text11                             1496     1496       24      819       0
+                text10                             158A     158A        C      819       0
+                text9                              1554     1554       1C      819       0
+                text8                              157E     157E        C      819       0
+                text7                              1596     1596        A      819       0
+                text6                              1518     1518       1E      819       0
+                text5                              146A     146A       2C      819       0
+                text4                              14BA     14BA       20      819       0
+                text3                              143E     143E       2C      819       0
+                text2                              14FA     14FA       1E      819       0
+                text1                              1412     1412       2C      819       0
+                text0                              11F6     11F6       C8      819       0
+                cstackCOMRAM                          1        1       18        1       1
+                cinit                              1570     1570        E      819       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text18                             1336     1336       36         0
-                text17                             1472     1472       1E         0
-                text16                             101E     101E       EC         0
-                text15                             110A     110A       D8         0
-                text14                             1256     1256       72         0
-                text13                             11E2     11E2       74         0
-                text12                             12C8     12C8       38         0
-                text11                             1434     1434       20         0
-                text10                             13F0     13F0       24         0
-                text9                              14C6     14C6        C         0
-                text8                              1490     1490       1C         0
-                text7                              14BA     14BA        C         0
-                text6                              14D2     14D2        A         0
-                text5                              1454     1454       1E         0
-                text4                              13C4     13C4       2C         0
-                text3                              1414     1414       20         0
-                text2                              1398     1398       2C         0
-                text1                              136C     136C       2C         0
-                text0                              1300     1300       36         0
-                cinit                              14AC     14AC        E         0
+                text19                             13DC     13DC       36         0
+                text18                             1536     1536       1E         0
+                text17                             1032     1032       EC         0
+                text16                             111E     111E       D8         0
+                text15                             1332     1332       72         0
+                text14                             12BE     12BE       74         0
+                text13                             13A4     13A4       38         0
+                text12                             14DA     14DA       20         0
+                text11                             1496     1496       24         0
+                text10                             158A     158A        C         0
+                text9                              1554     1554       1C         0
+                text8                              157E     157E        C         0
+                text7                              1596     1596        A         0
+                text6                              1518     1518       1E         0
+                text5                              146A     146A       2C         0
+                text4                              14BA     14BA       20         0
+                text3                              143E     143E       2C         0
+                text2                              14FA     14FA       1E         0
+                text1                              1412     1412       2C         0
+                text0                              11F6     11F6       C8         0
+                cinit                              1570     1570        E         0
 
         CLASS   CONST          
 
         CLASS   SMALLCONST     
-                smallconst                         1000     1000       1E         0
+                smallconst                         1000     1000       32         0
 
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                          1        1       15         1
+                cstackCOMRAM                          1        1       18         1
 
         CLASS   ABS1           
 
@@ -157,9 +159,9 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  000015  000016         1       1  COMRAM  
-                smallconst                     001000  00001E  00101E       800       0  SMALLCON
-                text16                         00101E  0004BE  0014DC       80F       0  CODE    
+                cstackCOMRAM                   000001  000018  000019         1       1  COMRAM  
+                smallconst                     001000  000032  001032       800       0  SMALLCON
+                text17                         001032  00056E  0015A0       819       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -183,17 +185,17 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
-        BIGRAM           000016-000F37              F22
+        BIGRAM           000019-000F37              F1F
         CODE             000004-000FFF              FFC
-                         0014DC-00FFFF             EB24
-        COMRAM           000016-00005F               4A
+                         0015A0-00FFFF             EA60
+        COMRAM           000019-00005F               47
         CONST            000004-000FFF              FFC
-                         0014DC-00FFFF             EB24
+                         0015A0-00FFFF             EA60
         EEDATA           F00000-F003FF              400
-        MEDIUMCONST      0014DC-00FFFF             EB24
+        MEDIUMCONST      0015A0-00FFFF             EA60
         RAM              000060-000F37              100
         SFR              000F38-000FFF               28
-        SMALLCONST       0014DC-00FFFF              100
+        SMALLCONST       0015A0-00FFFF              100
         STACK            000060-000F37              ED8
 
                                   Symbol Table
@@ -229,10 +231,10 @@ _TRISCbits                 (abs)        000F94
 _TXREG1                    (abs)        000FAD
 _TXSTA1                    (abs)        000FAC
 _TXSTA1bits                (abs)        000FAC
-_UARTInit                  text18       001336
-_UARTWriteByte             text17       001472
-_UARTWriteByteDec          text14       001256
-_UARTWriteStrLn            text13       0011E2
+_UARTInit                  text19       0013DC
+_UARTWriteByte             text18       001536
+_UARTWriteByteDec          text15       001332
+_UARTWriteStrLn            text14       0012BE
 __CFG_BOREN$SBORDIS        (abs)        000000
 __CFG_BORV$190             (abs)        000000
 __CFG_CCP2MX$PORTC1        (abs)        000000
@@ -329,9 +331,9 @@ __Hrdata                   rdata        000000
 __Hreset_vec               reset_vec    000000
 __Hrparam                  rparam       000000
 __Hsfr                     sfr          000000
-__Hsmallconst              smallconst   00101E
+__Hsmallconst              smallconst   001032
 __Hspace_0                 (abs)        30000E
-__Hspace_1                 (abs)        000016
+__Hspace_1                 (abs)        000019
 __Hspace_2                 (abs)        000000
 __Hstack                   stack        000000
 __Hstruct                  struct       000000
@@ -348,6 +350,7 @@ __Htext15                  text15       000000
 __Htext16                  text16       000000
 __Htext17                  text17       000000
 __Htext18                  text18       000000
+__Htext19                  text19       000000
 __Htext2                   text2        000000
 __Htext3                   text3        000000
 __Htext4                   text4        000000
@@ -433,6 +436,7 @@ __Ltext15                  text15       000000
 __Ltext16                  text16       000000
 __Ltext17                  text17       000000
 __Ltext18                  text18       000000
+__Ltext19                  text19       000000
 __Ltext2                   text2        000000
 __Ltext3                   text3        000000
 __Ltext4                   text4        000000
@@ -442,15 +446,15 @@ __Ltext7                   text7        000000
 __Ltext8                   text8        000000
 __Ltext9                   text9        000000
 __S0                       (abs)        30000E
-__S1                       (abs)        000016
+__S1                       (abs)        000019
 __S2                       (abs)        000000
-___awdiv                   text16       00101E
+___awdiv                   text17       001032
 ___awdiv@counter           cstackCOMRAM 00000B
 ___awdiv@dividend          cstackCOMRAM 000007
 ___awdiv@divisor           cstackCOMRAM 000009
 ___awdiv@quotient          cstackCOMRAM 00000D
 ___awdiv@sign              cstackCOMRAM 00000C
-___awmod                   text15       00110A
+___awmod                   text16       00111E
 ___awmod@counter           cstackCOMRAM 000005
 ___awmod@dividend          cstackCOMRAM 000001
 ___awmod@divisor           cstackCOMRAM 000003
@@ -462,50 +466,52 @@ ___rparam_used             (abs)        000001
 ___sp                      stack        000000
 __accesstop                (abs)        000060
 __activetblptr             (abs)        000001
-__end_of_UARTInit          text18       00136C
-__end_of_UARTWriteByte     text17       001490
-__end_of_UARTWriteByteDec  text14       0012C8
-__end_of_UARTWriteStrLn    text13       001256
-__end_of___awdiv           text16       00110A
-__end_of___awmod           text15       0011E2
-__end_of__initialization   cinit        0014AC
-__end_of_eepromFirstRead   text9        0014D2
-__end_of_eepromFirstWrite  text7        0014C6
-__end_of_eepromRead        text2        0013C4
-__end_of_eepromWrite       text6        0014DC
-__end_of_i2c_NAK           text5        001472
-__end_of_i2c_init          text1        001398
-__end_of_i2c_read          text4        0013F0
-__end_of_i2c_repStart      text11       001454
-__end_of_i2c_start         text8        0014AC
-__end_of_i2c_stop          text3        001434
-__end_of_i2c_waitForIdle   text12       001300
-__end_of_i2c_write         text10       001414
-__end_of_main              text0        001336
-__initialization           cinit        0014AC
+__end_of_UARTInit          text19       001412
+__end_of_UARTWriteByte     text18       001554
+__end_of_UARTWriteByteDec  text15       0013A4
+__end_of_UARTWriteStrLn    text14       001332
+__end_of___awdiv           text17       00111E
+__end_of___awmod           text16       0011F6
+__end_of__initialization   cinit        001570
+__end_of_eepromFirstRead   text10       001596
+__end_of_eepromFirstWrite  text8        00158A
+__end_of_eepromRead        text3        00146A
+__end_of_eepromWrite       text7        0015A0
+__end_of_eepromWriteFull   text2        001518
+__end_of_i2c_NAK           text6        001536
+__end_of_i2c_init          text1        00143E
+__end_of_i2c_read          text5        001496
+__end_of_i2c_repStart      text12       0014FA
+__end_of_i2c_start         text9        001570
+__end_of_i2c_stop          text4        0014DA
+__end_of_i2c_waitForIdle   text13       0013DC
+__end_of_i2c_write         text11       0014BA
+__end_of_main              text0        0012BE
+__initialization           cinit        001570
 __mediumconst              mediumconst  000000
-__pcinit                   cinit        0014AC
+__pcinit                   cinit        001570
 __pcstackCOMRAM            cstackCOMRAM 000001
 __psmallconst              smallconst   001000
-__ptext0                   text0        001300
-__ptext1                   text1        00136C
-__ptext10                  text10       0013F0
-__ptext11                  text11       001434
-__ptext12                  text12       0012C8
-__ptext13                  text13       0011E2
-__ptext14                  text14       001256
-__ptext15                  text15       00110A
-__ptext16                  text16       00101E
-__ptext17                  text17       001472
-__ptext18                  text18       001336
-__ptext2                   text2        001398
-__ptext3                   text3        001414
-__ptext4                   text4        0013C4
-__ptext5                   text5        001454
-__ptext6                   text6        0014D2
-__ptext7                   text7        0014BA
-__ptext8                   text8        001490
-__ptext9                   text9        0014C6
+__ptext0                   text0        0011F6
+__ptext1                   text1        001412
+__ptext10                  text10       00158A
+__ptext11                  text11       001496
+__ptext12                  text12       0014DA
+__ptext13                  text13       0013A4
+__ptext14                  text14       0012BE
+__ptext15                  text15       001332
+__ptext16                  text16       00111E
+__ptext17                  text17       001032
+__ptext18                  text18       001536
+__ptext19                  text19       0013DC
+__ptext2                   text2        0014FA
+__ptext3                   text3        00143E
+__ptext4                   text4        0014BA
+__ptext5                   text5        00146A
+__ptext6                   text6        001518
+__ptext7                   text7        001596
+__ptext8                   text8        00157E
+__ptext9                   text9        001554
 __ramtop                   ramtop       001000
 __size_of_UARTInit         (abs)        000000
 __size_of_UARTWriteByte    (abs)        000000
@@ -517,6 +523,7 @@ __size_of_eepromFirstRead  (abs)        000000
 __size_of_eepromFirstWrite (abs)        000000
 __size_of_eepromRead       (abs)        000000
 __size_of_eepromWrite      (abs)        000000
+__size_of_eepromWriteFull  (abs)        000000
 __size_of_i2c_NAK          (abs)        000000
 __size_of_i2c_init         (abs)        000000
 __size_of_i2c_read         (abs)        000000
@@ -527,35 +534,40 @@ __size_of_i2c_waitForIdle  (abs)        000000
 __size_of_i2c_write        (abs)        000000
 __size_of_main             (abs)        000000
 __smallconst               smallconst   001000
-_eepromFirstRead           text9        0014C6
-_eepromFirstWrite          text7        0014BA
-_eepromRead                text2        001398
-_eepromWrite               text6        0014D2
-_i2c_NAK                   text5        001454
-_i2c_init                  text1        00136C
-_i2c_read                  text4        0013C4
-_i2c_repStart              text11       001434
-_i2c_start                 text8        001490
-_i2c_stop                  text3        001414
-_i2c_waitForIdle           text12       0012C8
-_i2c_write                 text10       0013F0
-_main                      text0        001300
+_eepromFirstRead           text10       00158A
+_eepromFirstWrite          text8        00157E
+_eepromRead                text3        00143E
+_eepromWrite               text7        001596
+_eepromWriteFull           text2        0014FA
+_i2c_NAK                   text6        001518
+_i2c_init                  text1        001412
+_i2c_read                  text5        00146A
+_i2c_repStart              text12       0014DA
+_i2c_start                 text9        001554
+_i2c_stop                  text4        0014BA
+_i2c_waitForIdle           text13       0013A4
+_i2c_write                 text11       001496
+_main                      text0        0011F6
 eepromRead@addressH        cstackCOMRAM 000005
 eepromRead@addressL        cstackCOMRAM 000004
 eepromRead@buffer          cstackCOMRAM 000006
 eepromWrite@data           cstackCOMRAM 000003
-end_of_initialization      cinit        0014AC
+eepromWriteFull@addressH   cstackCOMRAM 000006
+eepromWriteFull@addressL   cstackCOMRAM 000004
+eepromWriteFull@data       cstackCOMRAM 000005
+end_of_initialization      cinit        001570
 i2c_read@i2cReadData       cstackCOMRAM 000002
 i2c_write@i2cWriteData     cstackCOMRAM 000002
 intlevel0                  text         000000
 intlevel1                  text         000000
 intlevel2                  text         000000
 intlevel3                  text         000000
-main@buff                  cstackCOMRAM 000015
+main@i                     cstackCOMRAM 000015
+main@i_562                 cstackCOMRAM 000017
 stackhi                    (abs)        000F37
 stacklo                    (abs)        000060
 start                      init         000000
-start_initialization       cinit        0014AC
+start_initialization       cinit        001570
 
 
 FUNCTION INFORMATION:
@@ -567,7 +579,8 @@ FUNCTION INFORMATION:
   argc            2   15[COMRAM] int 
   argv            3   17[COMRAM] PTR PTR unsigned char 
  Auto vars:     Size  Location     Type
-  buff            1   20[COMRAM] unsigned char 
+  i               2   22[COMRAM] unsigned int 
+  i               2   20[COMRAM] unsigned int 
  Return value:  Size  Location     Type
                   2   15[COMRAM] int 
  Registers used:
@@ -578,16 +591,17 @@ FUNCTION INFORMATION:
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
       Params:         5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
       Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-Total ram usage:        6 bytes
+      Totals:         9       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        9 bytes
  Hardware stack levels required when called:    4
  This function calls:
 		_UARTInit
 		_UARTWriteByteDec
 		_UARTWriteStrLn
 		_eepromRead
+		_eepromWriteFull
 		_i2c_init
  This function is called by:
 		Startup code after reset
@@ -618,6 +632,40 @@ Total ram usage:        0 bytes
  Hardware stack levels used:    1
  This function calls:
 		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _eepromWriteFull *****************
+ Defined at:
+		line 38 in file "eeprom.c"
+ Parameters:    Size  Location     Type
+  addressH        1    wreg     unsigned char 
+  addressL        1    3[COMRAM] unsigned char 
+  data            1    4[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+  addressH        1    5[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:         2       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_eepromFirstWrite
+		_eepromWrite
+		_i2c_stop
  This function is called by:
 		_main
  This function uses a non-reentrant model
@@ -687,8 +735,8 @@ Total ram usage:        0 bytes
 		_i2c_waitForIdle
  This function is called by:
 		_eepromRead
-		_eepromStop
 		_eepromWriteFull
+		_eepromStop
  This function uses a non-reentrant model
 
 
@@ -973,7 +1021,7 @@ Total ram usage:        1 bytes
 		line 72 in file "uart.c"
  Parameters:    Size  Location     Type
   string          2    1[COMRAM] PTR unsigned char 
-		 -> STR_1(10), 
+		 -> STR_2(15), STR_1(15), 
  Auto vars:     Size  Location     Type
   i               1    5[COMRAM] unsigned char 
  Return value:  Size  Location     Type
@@ -1161,50 +1209,51 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awdiv.c
-		___awdiv       		CODE           	101E	0000	237
+		___awdiv       		CODE           	1032	0000	237
 
 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awdiv.c estimated size: 237
 
 uart.c
-		_UARTWriteByteDec		CODE           	1256	0000	115
-		_UARTWriteByte 		CODE           	1472	0000	31
-		_UARTInit      		CODE           	1336	0000	55
-		_UARTWriteStrLn		CODE           	11E2	0000	117
+		_UARTWriteByteDec		CODE           	1332	0000	115
+		_UARTWriteByte 		CODE           	1536	0000	31
+		_UARTInit      		CODE           	13DC	0000	55
+		_UARTWriteStrLn		CODE           	12BE	0000	117
 
 uart.c estimated size: 318
 
 i2c.c
-		_i2c_NAK       		CODE           	1454	0000	31
-		_i2c_start     		CODE           	1490	0000	29
-		_i2c_repStart  		CODE           	1434	0000	33
-		_i2c_waitForIdle		CODE           	12C8	0000	57
-		_i2c_write     		CODE           	13F0	0000	37
-		_i2c_stop      		CODE           	1414	0000	33
-		_i2c_read      		CODE           	13C4	0000	45
-		_i2c_init      		CODE           	136C	0000	45
+		_i2c_NAK       		CODE           	1518	0000	31
+		_i2c_start     		CODE           	1554	0000	29
+		_i2c_repStart  		CODE           	14DA	0000	33
+		_i2c_waitForIdle		CODE           	13A4	0000	57
+		_i2c_write     		CODE           	1496	0000	37
+		_i2c_stop      		CODE           	14BA	0000	33
+		_i2c_read      		CODE           	146A	0000	45
+		_i2c_init      		CODE           	1412	0000	45
 
 i2c.c estimated size: 310
 
 eeprom.c
-		_eepromFirstRead		CODE           	14C6	0000	13
-		_eepromWrite   		CODE           	14D2	0000	11
-		_eepromFirstWrite		CODE           	14BA	0000	13
-		_eepromRead    		CODE           	1398	0000	45
+		_eepromFirstRead		CODE           	158A	0000	13
+		_eepromWrite   		CODE           	1596	0000	11
+		_eepromFirstWrite		CODE           	157E	0000	13
+		_eepromWriteFull		CODE           	14FA	0000	31
+		_eepromRead    		CODE           	143E	0000	45
 
-eeprom.c estimated size: 82
+eeprom.c estimated size: 113
 
 shared
-		__initialization		CODE           	14AC	0000	1
+		__initialization		CODE           	1570	0000	1
 
 shared estimated size: 1
 
 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awmod.c
-		___awmod       		CODE           	110A	0000	217
+		___awmod       		CODE           	111E	0000	217
 
 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awmod.c estimated size: 217
 
 main.c
-		_main          		CODE           	1300	0000	55
+		_main          		CODE           	11F6	0000	201
 
-main.c estimated size: 55
+main.c estimated size: 201
 
