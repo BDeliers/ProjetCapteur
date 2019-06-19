@@ -42,7 +42,7 @@ typedef struct {
 	unsigned char listParams;
 } statementReceived;
 
-const discoverSend askForId();
+const discoverSend askForId(void);
 const discoverReceived parseDiscoverMessage(unsigned char m[]);
 const statementSend sendData(unsigned int id, unsigned char messageNumber, unsigned int data, unsigned char battery);
 const statementReceived parseStatementMessage(unsigned char m[]);

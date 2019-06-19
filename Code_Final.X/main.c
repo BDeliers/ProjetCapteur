@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <xc.h>
 
+#include "string.h"
 #include "general.h"
 #include "eeprom.h"
 #include "i2c.h"
@@ -148,8 +149,128 @@ int main(int argc, char** argv) {
         UINT8_T discover[10] = {ds.identification[0], ds.identification[1], ds.protocol[0], ds.protocol[1], ds.messageType, ds.messageNumber, ds.componentType[0], ds.componentType[1], ds.version[0], ds.version[1]};
     
         // Send it
-        
+        UINT8_T txBuffer[256];
+    
+        InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
+        SPIInit();                  // init SPI   
+        ResetRFModule();            // reset the RF Solutions LoRa module (should be optional since Power On Reset is implemented)
+
+        AntennaTX();                // connect antenna to module output
+
+        WriteSXRegister(REG_OP_MODE, FSK_SLEEP_MODE);       // SLEEP mode required first to change bit n°7
+        WriteSXRegister(REG_OP_MODE, LORA_SLEEP_MODE);      // switch from FSK mode to LoRa mode
+        WriteSXRegister(REG_OP_MODE, LORA_STANDBY_MODE);    // STANDBY mode required fot FIFO loading
+        __delay_ms(100);
+
+        InitModule();
+
+        strcpy((char*)txBuffer, (char*)discover);          // load txBuffer with content of txMsg
+
+        // load FIFO with data to transmit
+        WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_TX_BASE_ADDR));      // FifoAddrPtr takes value of FifoTxBaseAddr
+        WriteSXRegister(REG_PAYLOAD_LENGTH_LORA, PAYLOAD_LENGTH);                       // set the number of bytes to transmit (PAYLOAD_LENGTH is defined in RF_LoRa868_SO.h)
+
+        for (UINT8_T i = 0; i < PAYLOAD_LENGTH; i++) {
+            WriteSXRegister(REG_FIFO, txBuffer[i]);         // load FIFO with data to transmit  
+        }
+
+
+        // Set mode to LoRa TX
+        WriteSXRegister(REG_OP_MODE, LORA_TX_MODE);
+        __delay_ms(100);                                // delay required to start oscillator and PLL
+
+        WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
+        __delay_ms(100);
+
         // Wait to receive response
+        while(!configured) {
+            uint8_t reg_val;                // when reading SX1272 registers, stores the content (variable read in main and typically  updated by ReadSXRegister function)
+            uint8_t RXNumberOfBytes;        // to store the number of bytes received
+            uint8_t i;
+            UINT8_T rxReg[11];
+
+            InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
+            SPIInit();                  // init SPI   
+            ResetRFModule();            // reset the RF Solutions LoRa module (should be optional since Power On Reset is implemented)
+
+
+            WriteSXRegister(REG_OP_MODE, FSK_SLEEP_MODE);       // SLEEP mode required first to change bit n°7
+            WriteSXRegister(REG_OP_MODE, LORA_SLEEP_MODE);      // switch from FSK mode to LoRa mode
+            WriteSXRegister(REG_OP_MODE, LORA_STANDBY_MODE);    // STANDBY mode required fot FIFO loading
+            __delay_ms(100);
+
+            // initialize the module
+            InitModule();
+
+            AntennaRX();                // connect antenna to module input
+
+            // set FIFO_ADDR_PTR to FIFO_RX_BASE_ADDR
+            WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_BASE_ADDR));
+
+            // set mode to LoRa continuous RX
+            WriteSXRegister(REG_OP_MODE, LORA_RX_CONTINUOUS_MODE);
+            __delay_ms(100);                                    // delay required to start oscillator and PLL
+
+
+            forever {
+                // wait for valid header reception
+                reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                while ((reg_val & 0x10) == 0x00) {                  // check Valid Header flag (bit n°4)
+                    reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                }
+
+                // wait for end of packet reception
+                reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                while ((reg_val & 0x40) == 0x00) {                  // check Packet Reception Complete flag (bit n°6)
+                    reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                }
+
+                // Check CRC
+                /*if((reg_val & 0x20) != 0x00){                       // check Payload CRC Error flag (bit n°5)
+                    UARTWriteStrLn(" ");
+                    UARTWriteStrLn("payload CRC error"); 
+                }*/
+
+                // Read received data
+                RXNumberOfBytes = ReadSXRegister(REG_RX_NB_BYTES);                              // read how many bytes have been received
+                WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_CURRENT_ADDR));   // to read FIFO at correct location, load REG_FIFO_ADDR_PTR with REG_FIFO_RX_CURRENT_ADDR value
+                for (i = 0; i < RXNumberOfBytes; i++) {
+                    reg_val = ReadSXRegister(REG_FIFO);       // read FIFO
+                    rxReg[i] = reg_val;
+                    
+                }
+
+                WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
+                
+                // Parse received data
+                discoverReceived resp = parseDiscoverMessage(rxReg);
+                
+                // If valid identification
+                if(resp.identification[0] == 0x26 && resp.identification[1] == 0x42) {
+                    // If valid message type and it's our identification asking
+                    if(resp.messageType == 0x01 && resp.messageNumber == 0xc0) {
+                        // Store the ID
+                        eepromWriteFull(0x00, 0x01, resp.id[0]);
+                        eepromWriteFull(0x00, 0x02, resp.id[1]);
+                        
+                        // Store the standby delay
+                        eepromWriteFull(0x00, 0x03, resp.standby[0]);
+                        eepromWriteFull(0x00, 0x04, resp.standby[1]);
+                        
+                        // Store the timeout delay
+                        eepromWriteFull(0x00, 0x05, resp.timeout[0]);
+                        eepromWriteFull(0x00, 0x06, resp.timeout[1]);
+                        
+                        // Store number of retries
+                        eepromWriteFull(0x00, 0x07, resp.retries);
+
+                        // Store that we are configured
+                        eepromWriteFull(0x00, 0x00, 1);
+                        configured = 1; 
+                    }                    
+                }
+            }
+        }
     }
     
     // Now we're sure we have an ID
@@ -190,6 +311,38 @@ int main(int argc, char** argv) {
     UINT8_T statement[11] = {mess.identification[0], mess.identification[1], mess.protocol[0], mess.protocol[1], mess.messageType, mess.messageNumber, mess.id[0], mess.id[1], mess.data[0], mess.data[1], mess.battery};
 
     // Send message
+    UINT8_T txBuffer[256];
+    
+        InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
+        SPIInit();                  // init SPI   
+        ResetRFModule();            // reset the RF Solutions LoRa module (should be optional since Power On Reset is implemented)
+
+        AntennaTX();                // connect antenna to module output
+
+        WriteSXRegister(REG_OP_MODE, FSK_SLEEP_MODE);       // SLEEP mode required first to change bit n°7
+        WriteSXRegister(REG_OP_MODE, LORA_SLEEP_MODE);      // switch from FSK mode to LoRa mode
+        WriteSXRegister(REG_OP_MODE, LORA_STANDBY_MODE);    // STANDBY mode required fot FIFO loading
+        __delay_ms(100);
+
+        InitModule();
+
+        strcpy((char*)txBuffer, (char*)statement);          // load txBuffer with content of txMsg
+
+        // load FIFO with data to transmit
+        WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_TX_BASE_ADDR));      // FifoAddrPtr takes value of FifoTxBaseAddr
+        WriteSXRegister(REG_PAYLOAD_LENGTH_LORA, PAYLOAD_LENGTH);                       // set the number of bytes to transmit (PAYLOAD_LENGTH is defined in RF_LoRa868_SO.h)
+
+        for (UINT8_T i = 0; i < PAYLOAD_LENGTH; i++) {
+            WriteSXRegister(REG_FIFO, txBuffer[i]);         // load FIFO with data to transmit  
+        }
+
+
+        // Set mode to LoRa TX
+        WriteSXRegister(REG_OP_MODE, LORA_TX_MODE);
+        __delay_ms(100);                                // delay required to start oscillator and PLL
+
+        WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
+        __delay_ms(100);
         
     // Wait for response
     UINT8_T retries = 0;
@@ -201,6 +354,95 @@ int main(int argc, char** argv) {
     UINT16_T timeoutFull = ((UINT16_T)timeoutMsb << 8) | timeoutLsb;  
     
     // Loop while message not received  
+    while(retries < nRetries) {
+        uint8_t reg_val;                // when reading SX1272 registers, stores the content (variable read in main and typically  updated by ReadSXRegister function)
+        uint8_t RXNumberOfBytes;        // to store the number of bytes received
+        uint8_t i;
+        UINT8_T rxReg[13];
+
+        InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
+        SPIInit();                  // init SPI   
+        ResetRFModule();            // reset the RF Solutions LoRa module (should be optional since Power On Reset is implemented)
+
+
+        WriteSXRegister(REG_OP_MODE, FSK_SLEEP_MODE);       // SLEEP mode required first to change bit n°7
+        WriteSXRegister(REG_OP_MODE, LORA_SLEEP_MODE);      // switch from FSK mode to LoRa mode
+        WriteSXRegister(REG_OP_MODE, LORA_STANDBY_MODE);    // STANDBY mode required fot FIFO loading
+        __delay_ms(100);
+
+        // initialize the module
+        InitModule();
+
+        AntennaRX();                // connect antenna to module input
+
+        // set FIFO_ADDR_PTR to FIFO_RX_BASE_ADDR
+        WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_BASE_ADDR));
+
+        // set mode to LoRa continuous RX
+        WriteSXRegister(REG_OP_MODE, LORA_RX_CONTINUOUS_MODE);
+        __delay_ms(100);                                    // delay required to start oscillator and PLL
+
+
+        // Start timer
+        startTimer(timeoutMsb);
+        
+        forever {
+            // wait for valid header reception
+            reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+            while ((reg_val & 0x10) == 0x00) {                  // check Valid Header flag (bit n°4)
+                reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+            }
+
+            // wait for end of packet reception
+            reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+            while ((reg_val & 0x40) == 0x00) {                  // check Packet Reception Complete flag (bit n°6)
+                reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+            }
+
+            // Check CRC
+            /*if((reg_val & 0x20) != 0x00){                       // check Payload CRC Error flag (bit n°5)
+                UARTWriteStrLn(" ");
+                UARTWriteStrLn("payload CRC error"); 
+            }*/
+
+            // Read received data
+            RXNumberOfBytes = ReadSXRegister(REG_RX_NB_BYTES);                              // read how many bytes have been received
+            WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_CURRENT_ADDR));   // to read FIFO at correct location, load REG_FIFO_ADDR_PTR with REG_FIFO_RX_CURRENT_ADDR value
+            for (i = 0; i < RXNumberOfBytes; i++) {
+                reg_val = ReadSXRegister(REG_FIFO);       // read FIFO
+                rxReg[i] = reg_val;
+
+            }
+
+            WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
+
+            // Parse received data
+            statementReceived resp = parseStatementMessage(rxReg);
+
+            // If valid identification
+            if(resp.identification[0] == 0x26 && resp.identification[1] == 0x42) {
+                // If valid message type and it's our message, we exit the forever
+                if(resp.messageType == 0x02 && resp.messageNumber == messNum) {
+                    // Store the standby delay
+                    eepromWriteFull(0x00, 0x03, resp.standby[0]);
+                    eepromWriteFull(0x00, 0x04, resp.standby[1]);
+
+                    // Store the timeout delay
+                    eepromWriteFull(0x00, 0x05, resp.timeout[0]);
+                    eepromWriteFull(0x00, 0x06, resp.timeout[1]);
+
+                    // Store number of retries
+                    eepromWriteFull(0x00, 0x07, resp.retries);
+                        
+                    break;
+                }                    
+            }
+        }
+        
+        
+        __delay_ms(timeoutFull / 1000);
+        retries = retries + 1;
+    }
     
     // Increment message number in EEPROM
     eepromWriteFull(0x00, 0x08, messNum+1);    

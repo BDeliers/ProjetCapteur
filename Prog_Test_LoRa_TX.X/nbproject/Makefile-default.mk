@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=RF_LoRa_868_SO.c spi.c SX1272.c TX_LoRa.c
+SOURCEFILES_QUOTED_IF_SPACED=RF_LoRa_868_SO.c spi.c SX1272.c TX_LoRa.c messageParser.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/spi.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/TX_LoRa.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/RF_LoRa_868_SO.p1.d ${OBJECTDIR}/spi.p1.d ${OBJECTDIR}/SX1272.p1.d ${OBJECTDIR}/TX_LoRa.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/spi.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/TX_LoRa.p1 ${OBJECTDIR}/messageParser.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/RF_LoRa_868_SO.p1.d ${OBJECTDIR}/spi.p1.d ${OBJECTDIR}/SX1272.p1.d ${OBJECTDIR}/TX_LoRa.p1.d ${OBJECTDIR}/messageParser.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/spi.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/TX_LoRa.p1
+OBJECTFILES=${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/spi.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/TX_LoRa.p1 ${OBJECTDIR}/messageParser.p1
 
 # Source Files
-SOURCEFILES=RF_LoRa_868_SO.c spi.c SX1272.c TX_LoRa.c
+SOURCEFILES=RF_LoRa_868_SO.c spi.c SX1272.c TX_LoRa.c messageParser.c
 
 
 CFLAGS=
@@ -125,6 +125,14 @@ ${OBJECTDIR}/TX_LoRa.p1: TX_LoRa.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/TX_LoRa.d ${OBJECTDIR}/TX_LoRa.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/TX_LoRa.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/messageParser.p1: messageParser.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/messageParser.p1.d 
+	@${RM} ${OBJECTDIR}/messageParser.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/messageParser.p1 messageParser.c 
+	@-${MV} ${OBJECTDIR}/messageParser.d ${OBJECTDIR}/messageParser.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/messageParser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/RF_LoRa_868_SO.p1: RF_LoRa_868_SO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -157,6 +165,14 @@ ${OBJECTDIR}/TX_LoRa.p1: TX_LoRa.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TX_LoRa.p1 TX_LoRa.c 
 	@-${MV} ${OBJECTDIR}/TX_LoRa.d ${OBJECTDIR}/TX_LoRa.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/TX_LoRa.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/messageParser.p1: messageParser.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/messageParser.p1.d 
+	@${RM} ${OBJECTDIR}/messageParser.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/messageParser.p1 messageParser.c 
+	@-${MV} ${OBJECTDIR}/messageParser.d ${OBJECTDIR}/messageParser.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/messageParser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

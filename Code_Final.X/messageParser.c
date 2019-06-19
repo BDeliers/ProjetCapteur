@@ -3,7 +3,7 @@
 
 #include "messageParser.h"
 
-const discoverSend askForId() {
+const discoverSend askForId(void) {
 	discoverSend ds;
 
 	ds.identification[0] = 0x42;

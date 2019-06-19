@@ -11,7 +11,7 @@
 #define	_RF_LoRa_868_SO_H
 
 #include "general.h"
-#include <stdint.h>             // with this inclusion, the XC compiler will recognize standard types such as uint8_t or int16_t 
+#include <stdint.h>             // with this inclusion, the XC compiler will recognize standard types such as uint8_t or int16_t
                                 // (so, their definition in "general.h" is useless)
 
 
@@ -24,7 +24,7 @@
 #define RF_TXpin_DIR       TRISCbits.TRISC2          // direction bit for TX control line
 #define RF_RESETpin_DIR    TRISCbits.TRISC0          // direction bit for Reset
 
-#define PAYLOAD_LENGTH 7                             // for transmission: number of bytes to transmit
+#define PAYLOAD_LENGTH 11                             // for transmission: number of bytes to transmit
                                                      // (this value will be stored before transmission in REG_PAYLOAD_LENGTH_LORA register of SX1272 chip)
 #define POUT 14                                      // output power (in dBm)
                                                      // (used to compute the data to store in REG_PA_CONFIG register during configuration of SX1272 chip)
@@ -35,4 +35,3 @@ void AntennaTX(void);                               // connect antenna to module
 void AntennaRX(void);                               // connect antenna to module input
 
 #endif	/* _RF_LoRa_868_SO_H */
-

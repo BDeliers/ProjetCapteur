@@ -16,6 +16,7 @@
 #include "spi.h"
 #include "SX1272.h"
 #include "RF_LoRa_868_SO.h"
+#include "messageParser.h"
 
 
 // PIC18F26K22 Configuration Bit Settings
@@ -82,14 +83,14 @@
 // CONFIG7H
 #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot Block (000000-0007FFh) not protected from table reads executed in other blocks)
 
-
-    uint8_t pout;
-    int16_t i, rssi;
-    uint8_t txBuffer[256];
-
 int main(int argc, char** argv) {
+    UINT8_T txBuffer[256];
+    
+    discoverSend ds = askForId();
+    UINT8_T txMsg[10] = {ds.identification[0], ds.identification[1], ds.protocol[0], ds.protocol[1], ds.messageType, ds.messageNumber, ds.componentType[0], ds.componentType[1], ds.version[0], ds.version[1]};
 
-    const uint8_t txMsg[] = "13h54";
+    statementSend ss = sendData(0x0001, 0xFF, 0xFEFE, 0x11);
+    UINT8_T txMsg1[11] = {ss.identification[0], ss.identification[1], ss.protocol[0], ss.protocol[1], ss.messageType, ss.messageNumber, ss.id[0], ss.id[1], ss.data[0], ss.data[1], ss.battery};
     
 
     InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
@@ -105,31 +106,55 @@ int main(int argc, char** argv) {
     
     InitModule();
     
+    // Send a discover message
+    
     strcpy(( char* )txBuffer, ( char* )txMsg);          // load txBuffer with content of txMsg
                                                         // txMsg is a table of constant values, so it is stored in Flash Memory
                                                         // txBuffer is a table of variables, so it is stored in RAM
 
-        // load FIFO with data to transmit
-        WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_TX_BASE_ADDR));      // FifiAddrPtr takes value of FifoTxBaseAddr
-        WriteSXRegister(REG_PAYLOAD_LENGTH_LORA, PAYLOAD_LENGTH);                       // set the number of bytes to transmit (PAYLOAD_LENGTH is defined in RF_LoRa868_SO.h)
+    // load FIFO with data to transmit
+    WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_TX_BASE_ADDR));      // FifiAddrPtr takes value of FifoTxBaseAddr
+    WriteSXRegister(REG_PAYLOAD_LENGTH_LORA, PAYLOAD_LENGTH);                       // set the number of bytes to transmit (PAYLOAD_LENGTH is defined in RF_LoRa868_SO.h)
 
-        for (i = 0; i < PAYLOAD_LENGTH; i++) {
-            WriteSXRegister(REG_FIFO, txBuffer[i]);         // load FIFO with data to transmit  
-        }
-    
-    forever {
-        
-        // set mode to LoRa TX
-        WriteSXRegister(REG_OP_MODE, LORA_TX_MODE);
-        __delay_ms(100);                                    // delay required to start oscillator and PLL
-                
-        WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
-        
-        // wait before next transmission
-        for (i = 0; i < 4; i++) {
-           __delay_ms(500);  
-        }
-
+    for (UINT8_T i = 0; i < PAYLOAD_LENGTH; i++) {
+        WriteSXRegister(REG_FIFO, txBuffer[i]);         // load FIFO with data to transmit  
     }
+
+
+    // Set mode to LoRa TX
+    WriteSXRegister(REG_OP_MODE, LORA_TX_MODE);
+    __delay_ms(100);                                    // delay required to start oscillator and PLL
+
+    WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
+
+    // wait before next transmission
+    __delay_ms(100);
     
+    // Send statement message
+    
+    strcpy(( char* )txBuffer, ( char* )txMsg1);          // load txBuffer with content of txMsg
+                                                        // txMsg is a table of constant values, so it is stored in Flash Memory
+                                                        // txBuffer is a table of variables, so it is stored in RAM
+
+    // load FIFO with data to transmit
+    WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_TX_BASE_ADDR));      // FifiAddrPtr takes value of FifoTxBaseAddr
+    WriteSXRegister(REG_PAYLOAD_LENGTH_LORA, PAYLOAD_LENGTH);                       // set the number of bytes to transmit (PAYLOAD_LENGTH is defined in RF_LoRa868_SO.h)
+
+    for (UINT8_T i = 0; i < PAYLOAD_LENGTH; i++) {
+        WriteSXRegister(REG_FIFO, txBuffer[i]);         // load FIFO with data to transmit  
+    }
+
+
+    // Set mode to LoRa TX
+    WriteSXRegister(REG_OP_MODE, LORA_TX_MODE);
+    __delay_ms(100);                                    // delay required to start oscillator and PLL
+
+    WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
+
+    // wait before next transmission
+    __delay_ms(100);
+    
+    Sleep();
+
+    return(EXIT_SUCCESS);
 }

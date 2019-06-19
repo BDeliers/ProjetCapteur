@@ -69,8 +69,8 @@ void InitModule (void){
   WriteSXRegister(REG_IRQ_FLAGS, 0xFF);  // clear all IRQs
 
   // in Explicit Header mode, CRC enable or disable is not relevant in case of RX operation: everything depends on TX configuration
-  WriteSXRegister(REG_MODEM_CONFIG1, 0b10001000); //BW=500k, CR=4/5, explicit header, CRC disable, LDRO disabled
-  //writeRegister(REG_MODEM_CONFIG1, 0b10001010); //BW=500k, CR=4/5, explicit header, CRC enable, LDRO disabled
+  //WriteSXRegister(REG_MODEM_CONFIG1, 0b10001000); //BW=500k, CR=4/5, explicit header, CRC disable, LDRO disabled
+  WriteSXRegister(REG_MODEM_CONFIG1, 0b10001010); //BW=500k, CR=4/5, explicit header, CRC enable, LDRO disabled
 
   WriteSXRegister(REG_MODEM_CONFIG2, 0b11000111); // SF=12, normal TX mode, AGC auto on, RX timeout MSB = 11
 
