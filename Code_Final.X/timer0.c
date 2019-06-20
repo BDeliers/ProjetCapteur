@@ -42,7 +42,7 @@ void startTimer(UINT8_T duration) {
             TMR0 = 6940;
             break;
         default:
-            TMR0 = 0;
+            TMR0 = 46002;
             break;
     }
 } 

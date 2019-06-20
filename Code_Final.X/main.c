@@ -93,6 +93,22 @@
 // Number of wakes
 __persistent UINT16_T nWakes = 0;
 
+// Flag to stop or continue the rx loop
+UINT8_T stopLoop = 0;
+
+void __interrupt() timer0_ISR(void){
+/*  si l'on souhaite utiliser les 2 niveaux de priorit?:
+
+void __interrupt(high_priority) timer0_ISR(void){
+//ou
+void __interrupt(low_priority) timer0_ISR(void){
+	
+ */
+    if (INTCONbits.TMR0IF == 1){     // v?rifie si l'interruption est bien provoqu?e par le timer0
+        // Exit the rx loop
+        stopLoop = 1;
+    }
+}
 
 int main(int argc, char** argv) {
     
@@ -313,6 +329,22 @@ int main(int argc, char** argv) {
     // Send message
     UINT8_T txBuffer[256];
     
+    // Get number of retries
+    UINT8_T nRetries = eepromRead(0x00, 0x07);
+    
+    // Get timeout delay in EEPROM
+    UINT8_T timeoutMsb = eepromRead(0x00, 0x05);
+    UINT8_T timeoutLsb = eepromRead(0x00, 0x06);
+    UINT16_T timeoutFull = ((UINT16_T)timeoutMsb << 8) | timeoutLsb; 
+    
+    // Start a timeout timer
+    startTimer(timeoutLsb);
+    
+    // Number of sending retries
+    UINT8_T retries = 0;
+    
+    while(retries < nRetries) {
+
         InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
         SPIInit();                  // init SPI   
         ResetRFModule();            // reset the RF Solutions LoRa module (should be optional since Power On Reset is implemented)
@@ -342,22 +374,11 @@ int main(int argc, char** argv) {
         __delay_ms(100);                                // delay required to start oscillator and PLL
 
         WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
-        __delay_ms(100);
-        
-    // Wait for response
-    UINT8_T retries = 0;
-    
-    // Get number of retries and timeout delay in EEPROM
-    UINT8_T nRetries = eepromRead(0x00, 0x07);
-    UINT8_T timeoutMsb = eepromRead(0x00, 0x05);
-    UINT8_T timeoutLsb = eepromRead(0x00, 0x06);
-    UINT16_T timeoutFull = ((UINT16_T)timeoutMsb << 8) | timeoutLsb;  
-    
-    // Loop while message not received  
-    while(retries < nRetries) {
-        uint8_t reg_val;                // when reading SX1272 registers, stores the content (variable read in main and typically  updated by ReadSXRegister function)
-        uint8_t RXNumberOfBytes;        // to store the number of bytes received
-        uint8_t i;
+        __delay_ms(100); 
+
+        UINT8_T reg_val;                // when reading SX1272 registers, stores the content (variable read in main and typically  updated by ReadSXRegister function)
+        UINT8_T RXNumberOfBytes;        // to store the number of bytes received
+        UINT8_T i;
         UINT8_T rxReg[13];
 
         InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
@@ -382,66 +403,68 @@ int main(int argc, char** argv) {
         WriteSXRegister(REG_OP_MODE, LORA_RX_CONTINUOUS_MODE);
         __delay_ms(100);                                    // delay required to start oscillator and PLL
 
-
-        // Start timer
-        startTimer(timeoutMsb);
-        
         forever {
-            // wait for valid header reception
-            reg_val = ReadSXRegister(REG_IRQ_FLAGS);
-            while ((reg_val & 0x10) == 0x00) {                  // check Valid Header flag (bit n°4)
+            // If we are under timeout
+            if (stopLoop == 0) {
+                // wait for valid header reception
                 reg_val = ReadSXRegister(REG_IRQ_FLAGS);
-            }
+                while ((reg_val & 0x10) == 0x00) {                  // check Valid Header flag (bit n°4)
+                    reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                }
 
-            // wait for end of packet reception
-            reg_val = ReadSXRegister(REG_IRQ_FLAGS);
-            while ((reg_val & 0x40) == 0x00) {                  // check Packet Reception Complete flag (bit n°6)
+                // wait for end of packet reception
                 reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                while ((reg_val & 0x40) == 0x00) {                  // check Packet Reception Complete flag (bit n°6)
+                    reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                }
+
+                // Check CRC
+                /*if((reg_val & 0x20) != 0x00){                       // check Payload CRC Error flag (bit n°5)
+                    UARTWriteStrLn(" ");
+                    UARTWriteStrLn("payload CRC error"); 
+                }*/
+
+                // Read received data
+                RXNumberOfBytes = ReadSXRegister(REG_RX_NB_BYTES);                              // read how many bytes have been received
+                WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_CURRENT_ADDR));   // to read FIFO at correct location, load REG_FIFO_ADDR_PTR with REG_FIFO_RX_CURRENT_ADDR value
+                for (i = 0; i < RXNumberOfBytes; i++) {
+                    reg_val = ReadSXRegister(REG_FIFO);       // read FIFO
+                    rxReg[i] = reg_val;
+
+                }
+
+                WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
+
+                // Parse received data
+                statementReceived resp = parseStatementMessage(rxReg);
+
+                // If valid identification
+                if(resp.identification[0] == 0x26 && resp.identification[1] == 0x42) {
+                    // If valid message type and it's our message, we exit the forever
+                    if(resp.messageType == 0x02 && resp.messageNumber == messNum) {
+                        // Store the standby delay
+                        eepromWriteFull(0x00, 0x03, resp.standby[0]);
+                        eepromWriteFull(0x00, 0x04, resp.standby[1]);
+
+                        // Store the timeout delay
+                        eepromWriteFull(0x00, 0x05, resp.timeout[0]);
+                        eepromWriteFull(0x00, 0x06, resp.timeout[1]);
+
+                        // Store number of retries
+                        eepromWriteFull(0x00, 0x07, resp.retries);
+
+                        // Exit both whiles
+                        retries = nRetries;
+                    }
+                }
             }
-
-            // Check CRC
-            /*if((reg_val & 0x20) != 0x00){                       // check Payload CRC Error flag (bit n°5)
-                UARTWriteStrLn(" ");
-                UARTWriteStrLn("payload CRC error"); 
-            }*/
-
-            // Read received data
-            RXNumberOfBytes = ReadSXRegister(REG_RX_NB_BYTES);                              // read how many bytes have been received
-            WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_CURRENT_ADDR));   // to read FIFO at correct location, load REG_FIFO_ADDR_PTR with REG_FIFO_RX_CURRENT_ADDR value
-            for (i = 0; i < RXNumberOfBytes; i++) {
-                reg_val = ReadSXRegister(REG_FIFO);       // read FIFO
-                rxReg[i] = reg_val;
-
-            }
-
-            WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
-
-            // Parse received data
-            statementReceived resp = parseStatementMessage(rxReg);
-
-            // If valid identification
-            if(resp.identification[0] == 0x26 && resp.identification[1] == 0x42) {
-                // If valid message type and it's our message, we exit the forever
-                if(resp.messageType == 0x02 && resp.messageNumber == messNum) {
-                    // Store the standby delay
-                    eepromWriteFull(0x00, 0x03, resp.standby[0]);
-                    eepromWriteFull(0x00, 0x04, resp.standby[1]);
-
-                    // Store the timeout delay
-                    eepromWriteFull(0x00, 0x05, resp.timeout[0]);
-                    eepromWriteFull(0x00, 0x06, resp.timeout[1]);
-
-                    // Store number of retries
-                    eepromWriteFull(0x00, 0x07, resp.retries);
-                        
-                    break;
-                }                    
+            // If we had a timeout
+            else {
+                stopLoop = 0;
+                retries = retries + 1;
+                break;
             }
         }
-        
-        
-        __delay_ms(timeoutFull / 1000);
-        retries = retries + 1;
     }
     
     // Increment message number in EEPROM

@@ -27,17 +27,25 @@
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 /opt/microchip/xc8/v2.00/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
+"7 /opt/microchip/xc8/v2.00/pic/sources/c99/common/strcpy.c
+[v _strcpy strcpy `(*.39uc  1 e 2 0 ]
 "15 /opt/microchip/xc8/v2.00/pic/sources/c99/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 /opt/microchip/xc8/v2.00/pic/sources/c99/common/Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
+"28 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/commLora.c
+[v _initLoRaRx initLoRaRx `(v  1 e 1 0 ]
+"77
+[v _readLoRaData readLoRaData `(v  1 e 1 0 ]
 "18 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/RF_LoRa_868_SO.c
 [v _InitRFLoRaPins InitRFLoRaPins `(v  1 e 1 0 ]
 "27
 [v _ResetRFModule ResetRFModule `(v  1 e 1 0 ]
+"35
+[v _AntennaTX AntennaTX `(v  1 e 1 0 ]
 "42
 [v _AntennaRX AntennaRX `(v  1 e 1 0 ]
-"87 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/RXcontinuous_LoRa.c
+"85 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/RXcontinuous_LoRa.c
 [v _main main `(i  1 e 2 0 ]
 "16 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/spi.c
 [v _SPIInit SPIInit `(v  1 e 1 0 ]
@@ -49,8 +57,6 @@
 [v _WriteSXRegister WriteSXRegister `(v  1 e 1 0 ]
 "29
 [v _ReadSXRegister ReadSXRegister `(uc  1 e 1 0 ]
-"42
-[v _GetMode GetMode `(v  1 e 1 0 ]
 "94
 [v _InitModule InitModule `(v  1 e 1 0 ]
 "143
@@ -65,9 +71,7 @@
 [v _UARTWriteStrLn UARTWriteStrLn `(v  1 e 1 0 ]
 "83
 [v _UARTWriteByteHex UARTWriteByteHex `(v  1 e 1 0 ]
-"93
-[v _UARTWriteByteDec UARTWriteByteDec `(v  1 e 1 0 ]
-[s S280 . 1 `uc 1 ANSB0 1 0 :1:0 
+[s S219 . 1 `uc 1 ANSB0 1 0 :1:0 
 `uc 1 ANSB1 1 0 :1:1 
 `uc 1 ANSB2 1 0 :1:2 
 `uc 1 ANSB3 1 0 :1:3 
@@ -75,9 +79,9 @@
 `uc 1 ANSB5 1 0 :1:5 
 ]
 "112 /opt/microchip/xc8/v2.00/pic/include/pic18f26k22.h
-[u S287 . 1 `S280 1 . 1 0 ]
-[v _ANSELBbits ANSELBbits `VES287  1 e 1 @3897 ]
-[s S666 . 1 `uc 1 . 1 0 :2:0 
+[u S226 . 1 `S219 1 . 1 0 ]
+[v _ANSELBbits ANSELBbits `VES226  1 e 1 @3897 ]
+[s S605 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
 `uc 1 ANSC4 1 0 :1:4 
@@ -86,18 +90,18 @@
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "163
-[u S674 . 1 `S666 1 . 1 0 ]
-[v _ANSELCbits ANSELCbits `VES674  1 e 1 @3898 ]
+[u S613 . 1 `S605 1 . 1 0 ]
+[v _ANSELCbits ANSELCbits `VES613  1 e 1 @3898 ]
 "3572
 [v _SSP2CON1 SSP2CON1 `VEuc  1 e 1 @3948 ]
-[s S319 . 1 `uc 1 . 1 0 :2:0 
+[s S258 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "3827
-[s S322 . 1 `uc 1 . 1 0 :5:0 
+[s S261 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S325 . 1 `uc 1 BF 1 0 :1:0 
+[s S264 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -106,38 +110,38 @@
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S334 . 1 `uc 1 . 1 0 :2:0 
+[s S273 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S339 . 1 `uc 1 . 1 0 :2:0 
+[s S278 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 A 1 0 :1:5 
 ]
-[s S344 . 1 `uc 1 . 1 0 :2:0 
+[s S283 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S349 . 1 `uc 1 . 1 0 :2:0 
+[s S288 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S354 . 1 `uc 1 . 1 0 :2:0 
+[s S293 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S357 . 1 `uc 1 . 1 0 :5:0 
+[s S296 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S360 . 1 `uc 1 . 1 0 :2:0 
+[s S299 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S365 . 1 `uc 1 BF2 1 0 :1:0 
+[s S304 . 1 `uc 1 BF2 1 0 :1:0 
 `uc 1 UA2 1 0 :1:1 
 `uc 1 I2C_READ2 1 0 :1:2 
 `uc 1 I2C_START2 1 0 :1:3 
@@ -146,61 +150,61 @@
 `uc 1 CKE2 1 0 :1:6 
 `uc 1 SMP2 1 0 :1:7 
 ]
-[s S374 . 1 `uc 1 . 1 0 :2:0 
+[s S313 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE2 1 0 :1:2 
 `uc 1 S2 1 0 :1:3 
 `uc 1 P2 1 0 :1:4 
 `uc 1 DATA_ADDRESS2 1 0 :1:5 
 ]
-[s S380 . 1 `uc 1 . 1 0 :2:0 
+[s S319 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW2 1 0 :1:2 
 `uc 1 START2 1 0 :1:3 
 `uc 1 STOP2 1 0 :1:4 
 `uc 1 D_A2 1 0 :1:5 
 ]
-[s S386 . 1 `uc 1 . 1 0 :5:0 
+[s S325 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A2 1 0 :1:5 
 ]
-[s S389 . 1 `uc 1 . 1 0 :2:0 
+[s S328 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_nA2 1 0 :1:5 
 ]
-[s S394 . 1 `uc 1 . 1 0 :2:0 
+[s S333 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W2 1 0 :1:2 
 ]
-[s S397 . 1 `uc 1 . 1 0 :2:0 
+[s S336 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_nW2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 I2C_DAT2 1 0 :1:5 
 ]
-[s S402 . 1 `uc 1 . 1 0 :2:0 
+[s S341 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W2 1 0 :1:2 
 ]
-[s S405 . 1 `uc 1 . 1 0 :5:0 
+[s S344 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_A2 1 0 :1:5 
 ]
-[s S408 . 1 `uc 1 . 1 0 :2:0 
+[s S347 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA2 1 0 :1:5 
 ]
-[s S413 . 1 `uc 1 . 1 0 :2:0 
+[s S352 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE2 1 0 :1:2 
 ]
-[s S416 . 1 `uc 1 . 1 0 :5:0 
+[s S355 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS2 1 0 :1:5 
 ]
-[s S419 . 1 `uc 1 . 1 0 :2:0 
+[s S358 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS2 1 0 :1:5 
 ]
-[u S424 . 1 `S319 1 . 1 0 `S322 1 . 1 0 `S325 1 . 1 0 `S334 1 . 1 0 `S339 1 . 1 0 `S344 1 . 1 0 `S349 1 . 1 0 `S354 1 . 1 0 `S357 1 . 1 0 `S360 1 . 1 0 `S365 1 . 1 0 `S374 1 . 1 0 `S380 1 . 1 0 `S386 1 . 1 0 `S389 1 . 1 0 `S394 1 . 1 0 `S397 1 . 1 0 `S402 1 . 1 0 `S405 1 . 1 0 `S408 1 . 1 0 `S413 1 . 1 0 `S416 1 . 1 0 `S419 1 . 1 0 ]
-[v _SSP2STATbits SSP2STATbits `VES424  1 e 1 @3949 ]
+[u S363 . 1 `S258 1 . 1 0 `S261 1 . 1 0 `S264 1 . 1 0 `S273 1 . 1 0 `S278 1 . 1 0 `S283 1 . 1 0 `S288 1 . 1 0 `S293 1 . 1 0 `S296 1 . 1 0 `S299 1 . 1 0 `S304 1 . 1 0 `S313 1 . 1 0 `S319 1 . 1 0 `S325 1 . 1 0 `S328 1 . 1 0 `S333 1 . 1 0 `S336 1 . 1 0 `S341 1 . 1 0 `S344 1 . 1 0 `S347 1 . 1 0 `S352 1 . 1 0 `S355 1 . 1 0 `S358 1 . 1 0 ]
+[v _SSP2STATbits SSP2STATbits `VES363  1 e 1 @3949 ]
 "4162
 [v _SSP2BUF SSP2BUF `VEuc  1 e 1 @3951 ]
-[s S127 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S52 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -210,7 +214,7 @@
 `uc 1 LATB7 1 0 :1:7 
 ]
 "7383
-[s S136 . 1 `uc 1 LB0 1 0 :1:0 
+[s S61 . 1 `uc 1 LB0 1 0 :1:0 
 `uc 1 LB1 1 0 :1:1 
 `uc 1 LB2 1 0 :1:2 
 `uc 1 LB3 1 0 :1:3 
@@ -219,9 +223,9 @@
 `uc 1 LB6 1 0 :1:6 
 `uc 1 LB7 1 0 :1:7 
 ]
-[u S145 . 1 `S127 1 . 1 0 `S136 1 . 1 0 ]
-[v _LATBbits LATBbits `VES145  1 e 1 @3978 ]
-[s S1011 . 1 `uc 1 LATC0 1 0 :1:0 
+[u S70 . 1 `S52 1 . 1 0 `S61 1 . 1 0 ]
+[v _LATBbits LATBbits `VES70  1 e 1 @3978 ]
+[s S950 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -231,7 +235,7 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "7495
-[s S1020 . 1 `uc 1 LC0 1 0 :1:0 
+[s S959 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -240,9 +244,9 @@
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S1029 . 1 `S1011 1 . 1 0 `S1020 1 . 1 0 ]
-[v _LATCbits LATCbits `VES1029  1 e 1 @3979 ]
-[s S240 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S968 . 1 `S950 1 . 1 0 `S959 1 . 1 0 ]
+[v _LATCbits LATCbits `VES968  1 e 1 @3979 ]
+[s S179 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -252,7 +256,7 @@
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "7834
-[s S249 . 1 `uc 1 RB0 1 0 :1:0 
+[s S188 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -261,9 +265,9 @@
 `uc 1 RB6 1 0 :1:6 
 `uc 1 RB7 1 0 :1:7 
 ]
-[u S258 . 1 `S240 1 . 1 0 `S249 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES258  1 e 1 @3987 ]
-[s S626 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S197 . 1 `S179 1 . 1 0 `S188 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES197  1 e 1 @3987 ]
+[s S565 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -273,7 +277,7 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "8056
-[s S635 . 1 `uc 1 RC0 1 0 :1:0 
+[s S574 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -282,9 +286,9 @@
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S644 . 1 `S626 1 . 1 0 `S635 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES644  1 e 1 @3988 ]
-[s S806 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[u S583 . 1 `S565 1 . 1 0 `S574 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES583  1 e 1 @3988 ]
+[s S745 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSP1IE 1 0 :1:3 
@@ -293,14 +297,14 @@
 `uc 1 ADIE 1 0 :1:6 
 ]
 "8639
-[s S814 . 1 `uc 1 . 1 0 :3:0 
+[s S753 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIE 1 0 :1:3 
 `uc 1 TXIE 1 0 :1:4 
 `uc 1 RCIE 1 0 :1:5 
 ]
-[u S819 . 1 `S806 1 . 1 0 `S814 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES819  1 e 1 @3997 ]
-[s S556 . 1 `uc 1 TMR1GIF 1 0 :1:0 
+[u S758 . 1 `S745 1 . 1 0 `S753 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES758  1 e 1 @3997 ]
+[s S495 . 1 `uc 1 TMR1GIF 1 0 :1:0 
 `uc 1 TMR3GIF 1 0 :1:1 
 `uc 1 TMR5GIF 1 0 :1:2 
 `uc 1 CTMUIF 1 0 :1:3 
@@ -310,16 +314,16 @@
 `uc 1 SSP2IF 1 0 :1:7 
 ]
 "9239
-[s S565 . 1 `uc 1 . 1 0 :1:0 
+[s S504 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RXBNIF 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBNIF 1 0 :1:4 
 ]
-[u S570 . 1 `S556 1 . 1 0 `S565 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES570  1 e 1 @4004 ]
+[u S509 . 1 `S495 1 . 1 0 `S504 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES509  1 e 1 @4004 ]
 "9582
 [v _RCSTA1 RCSTA1 `VEuc  1 e 1 @4011 ]
-[s S736 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S675 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -329,10 +333,10 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "9635
-[s S745 . 1 `uc 1 . 1 0 :3:0 
+[s S684 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S748 . 1 `uc 1 RX9D1 1 0 :1:0 
+[s S687 . 1 `uc 1 RX9D1 1 0 :1:0 
 `uc 1 OERR1 1 0 :1:1 
 `uc 1 FERR1 1 0 :1:2 
 `uc 1 ADDEN1 1 0 :1:3 
@@ -341,21 +345,21 @@
 `uc 1 RX91 1 0 :1:6 
 `uc 1 SPEN1 1 0 :1:7 
 ]
-[s S757 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S696 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S761 . 1 `uc 1 . 1 0 :6:0 
+[s S700 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S764 . 1 `uc 1 . 1 0 :5:0 
+[s S703 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[u S767 . 1 `S736 1 . 1 0 `S745 1 . 1 0 `S748 1 . 1 0 `S757 1 . 1 0 `S761 1 . 1 0 `S764 1 . 1 0 ]
-[v _RCSTA1bits RCSTA1bits `VES767  1 e 1 @4011 ]
+[u S706 . 1 `S675 1 . 1 0 `S684 1 . 1 0 `S687 1 . 1 0 `S696 1 . 1 0 `S700 1 . 1 0 `S703 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES706  1 e 1 @4011 ]
 "10038
 [v _TXSTA1 TXSTA1 `VEuc  1 e 1 @4012 ]
-[s S687 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S626 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -365,7 +369,7 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "10079
-[s S696 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S635 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -374,12 +378,12 @@
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S705 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S644 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S709 . 1 `S687 1 . 1 0 `S696 1 . 1 0 `S705 1 . 1 0 ]
-[v _TXSTA1bits TXSTA1bits `VES709  1 e 1 @4012 ]
+[u S648 . 1 `S626 1 . 1 0 `S635 1 . 1 0 `S644 1 . 1 0 ]
+[v _TXSTA1bits TXSTA1bits `VES648  1 e 1 @4012 ]
 "10413
 [v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
 "10491
@@ -388,7 +392,7 @@
 [v _SPBRG1 SPBRG1 `VEuc  1 e 1 @4015 ]
 "10647
 [v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @4016 ]
-[s S836 . 1 `uc 1 ABDEN 1 0 :1:0 
+[s S775 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -398,10 +402,10 @@
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "11675
-[s S845 . 1 `uc 1 . 1 0 :4:0 
+[s S784 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 SCKP 1 0 :1:4 
 ]
-[s S848 . 1 `uc 1 ABDEN1 1 0 :1:0 
+[s S787 . 1 `uc 1 ABDEN1 1 0 :1:0 
 `uc 1 WUE1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG161 1 0 :1:3 
@@ -410,66 +414,56 @@
 `uc 1 RCIDL1 1 0 :1:6 
 `uc 1 ABDOVF1 1 0 :1:7 
 ]
-[s S857 . 1 `uc 1 . 1 0 :4:0 
+[s S796 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TXCKP 1 0 :1:4 
 `uc 1 RXDTP 1 0 :1:5 
 `uc 1 RCMT 1 0 :1:6 
 ]
-[s S862 . 1 `uc 1 . 1 0 :4:0 
+[s S801 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TXCKP1 1 0 :1:4 
 `uc 1 RXDTP1 1 0 :1:5 
 `uc 1 RCMT1 1 0 :1:6 
 ]
-[s S867 . 1 `uc 1 . 1 0 :5:0 
+[s S806 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RXCKP 1 0 :1:5 
 ]
-[s S870 . 1 `uc 1 . 1 0 :1:0 
+[s S809 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 W4E 1 0 :1:1 
 ]
-[u S873 . 1 `S836 1 . 1 0 `S845 1 . 1 0 `S848 1 . 1 0 `S857 1 . 1 0 `S862 1 . 1 0 `S867 1 . 1 0 `S870 1 . 1 0 ]
-[v _BAUDCON1bits BAUDCON1bits `VES873  1 e 1 @4024 ]
+[u S812 . 1 `S775 1 . 1 0 `S784 1 . 1 0 `S787 1 . 1 0 `S796 1 . 1 0 `S801 1 . 1 0 `S806 1 . 1 0 `S809 1 . 1 0 ]
+[v _BAUDCON1bits BAUDCON1bits `VES812  1 e 1 @4024 ]
 "18402
 [v _PEIE PEIE `VEb  1 e 0 @32662 ]
 "18552
 [v _RCIE RCIE `VEb  1 e 0 @31981 ]
 "18555
 [v _RCIF RCIF `VEb  1 e 0 @31989 ]
-"87 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/RXcontinuous_LoRa.c
+"85 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/RXcontinuous_LoRa.c
 [v _main main `(i  1 e 2 0 ]
 {
-"89
-[v main@reg_val reg_val `uc  1 a 1 32 ]
+"97
+[v main@i i `i  1 a 2 17 ]
 "91
-[v main@i i `uc  1 a 1 31 ]
-"90
-[v main@RXNumberOfBytes RXNumberOfBytes `uc  1 a 1 30 ]
-"210
+[v main@buff buff `[256]uc  1 a 256 0 ]
+"103
 } 0
-"93 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/uart.c
-[v _UARTWriteByteDec UARTWriteByteDec `(v  1 e 1 0 ]
+"77 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/commLora.c
+[v _readLoRaData readLoRaData `(v  1 e 1 0 ]
 {
-[v UARTWriteByteDec@data data `uc  1 a 1 wreg ]
-[v UARTWriteByteDec@data data `uc  1 a 1 wreg ]
-"96
-[v UARTWriteByteDec@data data `uc  1 a 1 14 ]
-"102
+"78
+[v readLoRaData@reg_val reg_val `uc  1 a 1 11 ]
+"80
+[v readLoRaData@i i `uc  1 a 1 10 ]
+"79
+[v readLoRaData@RXNumberOfBytes RXNumberOfBytes `uc  1 a 1 9 ]
+"77
+[v readLoRaData@buff buff `*.39uc  1 p 2 7 ]
+"109
 } 0
-"7 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
+"28
+[v _initLoRaRx initLoRaRx `(v  1 e 1 0 ]
 {
-"10
-[v ___awmod@sign sign `uc  1 a 1 5 ]
-[v ___awmod@counter counter `uc  1 a 1 4 ]
-"7
-[v ___awmod@dividend dividend `i  1 p 2 0 ]
-[v ___awmod@divisor divisor `i  1 p 2 2 ]
-"34
-} 0
-"16 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/uart.c
-[v _UARTInit UARTInit `(v  1 e 1 0 ]
-{
-[v UARTInit@baudRate baudRate `ui  1 p 2 0 ]
-"50
+"51
 } 0
 "16 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/spi.c
 [v _SPIInit SPIInit `(v  1 e 1 0 ]
@@ -481,7 +475,32 @@
 {
 "33
 } 0
-"18
+"29 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/SX1272.c
+[v _ReadSXRegister ReadSXRegister `(uc  1 e 1 0 ]
+{
+[v ReadSXRegister@address address `uc  1 a 1 wreg ]
+"30
+[v ReadSXRegister@RegValue RegValue `uc  1 a 1 3 ]
+"29
+[v ReadSXRegister@address address `uc  1 a 1 wreg ]
+"31
+[v ReadSXRegister@address address `uc  1 a 1 4 ]
+"38
+} 0
+"47 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/spi.c
+[v _SPIReceive SPIReceive `(uc  1 e 1 0 ]
+{
+[v SPIReceive@data_out data_out `uc  1 a 1 wreg ]
+"49
+[v SPIReceive@data_in data_in `uc  1 a 1 2 ]
+[v SPIReceive@dummy_byte dummy_byte `uc  1 a 1 0 ]
+"47
+[v SPIReceive@data_out data_out `uc  1 a 1 wreg ]
+"50
+[v SPIReceive@data_out data_out `uc  1 a 1 1 ]
+"56
+} 0
+"18 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/RF_LoRa_868_SO.c
 [v _InitRFLoRaPins InitRFLoRaPins `(v  1 e 1 0 ]
 {
 "25
@@ -501,77 +520,6 @@
 [v WriteSXRegister@address address `uc  1 a 1 6 ]
 "27
 } 0
-"42
-[v _GetMode GetMode `(v  1 e 1 0 ]
-{
-"43
-[v GetMode@reg reg `uc  1 a 1 23 ]
-[v GetMode@masked_reg masked_reg `uc  1 a 1 22 ]
-"92
-} 0
-"72 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/uart.c
-[v _UARTWriteStrLn UARTWriteStrLn `(v  1 e 1 0 ]
-{
-"74
-[v UARTWriteStrLn@i i `uc  1 a 1 5 ]
-"72
-[v UARTWriteStrLn@string string `*.25uc  1 p 2 1 ]
-"81
-} 0
-"64
-[v _UARTWriteStr UARTWriteStr `(v  1 e 1 0 ]
-{
-"66
-[v UARTWriteStr@i i `uc  1 a 1 5 ]
-"64
-[v UARTWriteStr@string string `*.25uc  1 p 2 1 ]
-"70
-} 0
-"83
-[v _UARTWriteByteHex UARTWriteByteHex `(v  1 e 1 0 ]
-{
-[v UARTWriteByteHex@data data `uc  1 a 1 wreg ]
-"85
-[v UARTWriteByteHex@hexa hexa `*.25uc  1 a 2 17 ]
-"83
-[v UARTWriteByteHex@data data `uc  1 a 1 wreg ]
-"85
-[v UARTWriteByteHex@data data `uc  1 a 1 19 ]
-"91
-} 0
-"7 /opt/microchip/xc8/v2.00/pic/sources/c99/common/awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-{
-"10
-[v ___awdiv@quotient quotient `i  1 a 2 12 ]
-"11
-[v ___awdiv@sign sign `uc  1 a 1 11 ]
-[v ___awdiv@counter counter `uc  1 a 1 10 ]
-"7
-[v ___awdiv@dividend dividend `i  1 p 2 6 ]
-[v ___awdiv@divisor divisor `i  1 p 2 8 ]
-"41
-} 0
-"52 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/uart.c
-[v _UARTWriteByte UARTWriteByte `(v  1 e 1 0 ]
-{
-[v UARTWriteByte@data data `uc  1 a 1 wreg ]
-[v UARTWriteByte@data data `uc  1 a 1 wreg ]
-[v UARTWriteByte@data data `uc  1 a 1 0 ]
-"57
-} 0
-"29 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/SX1272.c
-[v _ReadSXRegister ReadSXRegister `(uc  1 e 1 0 ]
-{
-[v ReadSXRegister@address address `uc  1 a 1 wreg ]
-"30
-[v ReadSXRegister@RegValue RegValue `uc  1 a 1 3 ]
-"29
-[v ReadSXRegister@address address `uc  1 a 1 wreg ]
-"31
-[v ReadSXRegister@address address `uc  1 a 1 4 ]
-"38
-} 0
 "38 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/spi.c
 [v _SPITransfer SPITransfer `(v  1 e 1 0 ]
 {
@@ -584,21 +532,22 @@
 [v SPITransfer@data_out data_out `uc  1 a 1 1 ]
 "45
 } 0
-"47
-[v _SPIReceive SPIReceive `(uc  1 e 1 0 ]
-{
-[v SPIReceive@data_out data_out `uc  1 a 1 wreg ]
-"49
-[v SPIReceive@data_in data_in `uc  1 a 1 2 ]
-[v SPIReceive@dummy_byte dummy_byte `uc  1 a 1 0 ]
-"47
-[v SPIReceive@data_out data_out `uc  1 a 1 wreg ]
-"50
-[v SPIReceive@data_out data_out `uc  1 a 1 1 ]
-"56
-} 0
 "42 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/RF_LoRa_868_SO.c
 [v _AntennaRX AntennaRX `(v  1 e 1 0 ]
 {
 "47
+} 0
+"52 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_RX.X/uart.c
+[v _UARTWriteByte UARTWriteByte `(v  1 e 1 0 ]
+{
+[v UARTWriteByte@data data `uc  1 a 1 wreg ]
+[v UARTWriteByte@data data `uc  1 a 1 wreg ]
+[v UARTWriteByte@data data `uc  1 a 1 0 ]
+"57
+} 0
+"16
+[v _UARTInit UARTInit `(v  1 e 1 0 ]
+{
+[v UARTInit@baudRate baudRate `ui  1 p 2 0 ]
+"50
 } 0

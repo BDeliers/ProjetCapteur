@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=RXcontinuous_LoRa.c SX1272.c spi.c uart.c RF_LoRa_868_SO.c
+SOURCEFILES_QUOTED_IF_SPACED=RXcontinuous_LoRa.c SX1272.c spi.c uart.c RF_LoRa_868_SO.c commLora.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/RXcontinuous_LoRa.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/spi.p1 ${OBJECTDIR}/uart.p1 ${OBJECTDIR}/RF_LoRa_868_SO.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/RXcontinuous_LoRa.p1.d ${OBJECTDIR}/SX1272.p1.d ${OBJECTDIR}/spi.p1.d ${OBJECTDIR}/uart.p1.d ${OBJECTDIR}/RF_LoRa_868_SO.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/RXcontinuous_LoRa.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/spi.p1 ${OBJECTDIR}/uart.p1 ${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/commLora.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/RXcontinuous_LoRa.p1.d ${OBJECTDIR}/SX1272.p1.d ${OBJECTDIR}/spi.p1.d ${OBJECTDIR}/uart.p1.d ${OBJECTDIR}/RF_LoRa_868_SO.p1.d ${OBJECTDIR}/commLora.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/RXcontinuous_LoRa.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/spi.p1 ${OBJECTDIR}/uart.p1 ${OBJECTDIR}/RF_LoRa_868_SO.p1
+OBJECTFILES=${OBJECTDIR}/RXcontinuous_LoRa.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/spi.p1 ${OBJECTDIR}/uart.p1 ${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/commLora.p1
 
 # Source Files
-SOURCEFILES=RXcontinuous_LoRa.c SX1272.c spi.c uart.c RF_LoRa_868_SO.c
+SOURCEFILES=RXcontinuous_LoRa.c SX1272.c spi.c uart.c RF_LoRa_868_SO.c commLora.c
 
 
 CFLAGS=
@@ -133,6 +133,14 @@ ${OBJECTDIR}/RF_LoRa_868_SO.p1: RF_LoRa_868_SO.c  nbproject/Makefile-${CND_CONF}
 	@-${MV} ${OBJECTDIR}/RF_LoRa_868_SO.d ${OBJECTDIR}/RF_LoRa_868_SO.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RF_LoRa_868_SO.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/commLora.p1: commLora.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/commLora.p1.d 
+	@${RM} ${OBJECTDIR}/commLora.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/commLora.p1 commLora.c 
+	@-${MV} ${OBJECTDIR}/commLora.d ${OBJECTDIR}/commLora.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/commLora.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/RXcontinuous_LoRa.p1: RXcontinuous_LoRa.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -173,6 +181,14 @@ ${OBJECTDIR}/RF_LoRa_868_SO.p1: RF_LoRa_868_SO.c  nbproject/Makefile-${CND_CONF}
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/RF_LoRa_868_SO.p1 RF_LoRa_868_SO.c 
 	@-${MV} ${OBJECTDIR}/RF_LoRa_868_SO.d ${OBJECTDIR}/RF_LoRa_868_SO.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RF_LoRa_868_SO.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/commLora.p1: commLora.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/commLora.p1.d 
+	@${RM} ${OBJECTDIR}/commLora.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/commLora.p1 commLora.c 
+	@-${MV} ${OBJECTDIR}/commLora.d ${OBJECTDIR}/commLora.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/commLora.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

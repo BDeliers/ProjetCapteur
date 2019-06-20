@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v2.00/pic/dat/en_msgs.txt -cs \
   -h+dist/default/production/Prog_Test_LoRa_TX.X.production.sym \
   --cmf=dist/default/production/Prog_Test_LoRa_TX.X.production.cmf -z \
-  -Q18F26K22 -o/tmp/xcXh4zAqr --defsym=__MPLAB_BUILD=1 \
+  -Q18F26K22 -o/tmp/xcXsyuct6 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Prog_Test_LoRa_TX.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=0200h-0f37h -pstack=STACK -ACODE=00h-0FFFFh \
   -ACONST=00h-0FFFFh -ASMALLCONST=01000h-010FFhx240 \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcXHKFgD5.o dist/default/production/Prog_Test_LoRa_TX.X.production.o 
+  /tmp/xcXGj0hsW.o dist/default/production/Prog_Test_LoRa_TX.X.production.o 
 
 Object code version is 3.11
 
@@ -38,48 +38,52 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcXHKFgD5.o
+/tmp/xcXGj0hsW.o
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production/Prog_Test_LoRa_TX.X.production.o
-                text12                             FB00     FB00       16     7D80       0
-                text11                             FB70     FB70       24     7DB8       0
-                text10                             FB16     FB16       1A     7D8B       0
-                text9                              FCB0     FCB0       F8     7E58       0
-                text8                              FADE     FADE       10     7D6F       0
-                text7                              FB94     FB94       26     7DCA       0
-                text6                              FB4E     FB4E       22     7DA7       0
-                text5                              FBBA     FBBA       28     7DDD       0
-                text4                              FB30     FB30       1E     7D98       0
-                text3                              FBE2     FBE2       40     7DF1       0
-                text2                              FC22     FC22       44     7E11       0
-                text1                              FC66     FC66       4A     7E33       0
-                text0                              FDA8     FDA8      258     7ED4       0
-                cstackCOMRAM                          1        1       48        1       1
+                text14                             FC6E     FC6E       40     7E37       0
+                text13                             FB8C     FB8C       16     7DC6       0
+                text12                             FBFC     FBFC       24     7DFE       0
+                text11                             FBA2     FBA2       1A     7DD1       0
+                text10                             FF08     FF08       F8     7F84       0
+                text9                              FB6A     FB6A       10     7DB5       0
+                text8                              FC46     FC46       28     7E23       0
+                text7                              FBBC     FBBC       1E     7DDE       0
+                text6                              FCAE     FCAE       44     7E57       0
+                text5                              FCF2     FCF2       44     7E79       0
+                text4                              FC20     FC20       26     7E10       0
+                text3                              FBDA     FBDA       22     7DED       0
+                text2                              FD36     FD36       4A     7E9B       0
+                text1                              FD80     FD80       AE     7EC0       0
+                text0                              FE2E     FE2E       DA     7F17       0
+                cstackCOMRAM                          1        1       45        1       1
                 cstackBANK1                         100      100      100      100       1
-                bssCOMRAM                            49       49       15        1       1
-                cinit                              FAEE     FAEE       12     7D77       0
+                bssCOMRAM                            46       46       15        1       1
+                cinit                              FB7A     FB7A       12     7DBD       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text12                             FB00     FB00       16         0
-                text11                             FB70     FB70       24         0
-                text10                             FB16     FB16       1A         0
-                text9                              FCB0     FCB0       F8         0
-                text8                              FADE     FADE       10         0
-                text7                              FB94     FB94       26         0
-                text6                              FB4E     FB4E       22         0
-                text5                              FBBA     FBBA       28         0
-                text4                              FB30     FB30       1E         0
-                text3                              FBE2     FBE2       40         0
-                text2                              FC22     FC22       44         0
-                text1                              FC66     FC66       4A         0
-                text0                              FDA8     FDA8      258         0
-                cinit                              FAEE     FAEE       12         0
+                text14                             FC6E     FC6E       40         0
+                text13                             FB8C     FB8C       16         0
+                text12                             FBFC     FBFC       24         0
+                text11                             FBA2     FBA2       1A         0
+                text10                             FF08     FF08       F8         0
+                text9                              FB6A     FB6A       10         0
+                text8                              FC46     FC46       28         0
+                text7                              FBBC     FBBC       1E         0
+                text6                              FCAE     FCAE       44         0
+                text5                              FCF2     FCF2       44         0
+                text4                              FC20     FC20       26         0
+                text3                              FBDA     FBDA       22         0
+                text2                              FD36     FD36       4A         0
+                text1                              FD80     FD80       AE         0
+                text0                              FE2E     FE2E       DA         0
+                cinit                              FB7A     FB7A       12         0
 
         CLASS   CONST          
 
@@ -88,8 +92,8 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                          1        1       48         1
-                bssCOMRAM                            49       49       15         1
+                cstackCOMRAM                          1        1       45         1
+                bssCOMRAM                            46       46       15         1
 
         CLASS   ABS1           
 
@@ -147,22 +151,24 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  00005D  00005E         1       1  COMRAM  
+                cstackCOMRAM                   000001  00005A  00005B         1       1  COMRAM  
                 cstackBANK1                    000100  000100  000200       100       1  BANK1   
-                text8                          00FADE  000010  00FAEE      7D6F       0  CODE    
-                cinit                          00FAEE  000012  00FB00      7D77       0  CODE    
-                text12                         00FB00  000016  00FB16      7D80       0  CODE    
-                text10                         00FB16  00001A  00FB30      7D8B       0  CODE    
-                text4                          00FB30  00001E  00FB4E      7D98       0  CODE    
-                text6                          00FB4E  000022  00FB70      7DA7       0  CODE    
-                text11                         00FB70  000024  00FB94      7DB8       0  CODE    
-                text7                          00FB94  000026  00FBBA      7DCA       0  CODE    
-                text5                          00FBBA  000028  00FBE2      7DDD       0  CODE    
-                text3                          00FBE2  000040  00FC22      7DF1       0  CODE    
-                text2                          00FC22  000044  00FC66      7E11       0  CODE    
-                text1                          00FC66  00004A  00FCB0      7E33       0  CODE    
-                text9                          00FCB0  0000F8  00FDA8      7E58       0  CODE    
-                text0                          00FDA8  000258  010000      7ED4       0  CODE    
+                text9                          00FB6A  000010  00FB7A      7DB5       0  CODE    
+                cinit                          00FB7A  000012  00FB8C      7DBD       0  CODE    
+                text13                         00FB8C  000016  00FBA2      7DC6       0  CODE    
+                text11                         00FBA2  00001A  00FBBC      7DD1       0  CODE    
+                text7                          00FBBC  00001E  00FBDA      7DDE       0  CODE    
+                text3                          00FBDA  000022  00FBFC      7DED       0  CODE    
+                text12                         00FBFC  000024  00FC20      7DFE       0  CODE    
+                text4                          00FC20  000026  00FC46      7E10       0  CODE    
+                text8                          00FC46  000028  00FC6E      7E23       0  CODE    
+                text14                         00FC6E  000040  00FCAE      7E37       0  CODE    
+                text6                          00FCAE  000044  00FCF2      7E57       0  CODE    
+                text5                          00FCF2  000044  00FD36      7E79       0  CODE    
+                text2                          00FD36  00004A  00FD80      7E9B       0  CODE    
+                text1                          00FD80  0000AE  00FE2E      7EC0       0  CODE    
+                text0                          00FE2E  0000DA  00FF08      7F17       0  CODE    
+                text10                         00FF08  0000F8  010000      7F84       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -185,17 +191,17 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
-        BIGRAM           00005E-0000FF               A2
+        BIGRAM           00005B-0000FF               A5
                          000200-000F37              D38
-        CODE             000004-00FADD             FADA
-        COMRAM           00005E-00005F                2
-        CONST            000004-00FADD             FADA
+        CODE             000004-00FB69             FB66
+        COMRAM           00005B-00005F                5
+        CONST            000004-00FB69             FB66
         EEDATA           F00000-F003FF              400
-        MEDIUMCONST      001000-00FADD             EADE
+        MEDIUMCONST      001000-00FB69             EB6A
         RAM              000060-0000FF               A0
                          000200-000F37              100
         SFR              000F38-000FFF               28
-        SMALLCONST       001000-00FADD              100
+        SMALLCONST       001000-00FB69              100
         STACK            000200-000F37              D38
 
                                   Symbol Table
@@ -214,23 +220,23 @@ WriteSXRegister@address   cstackCOMRAM 000007
 WriteSXRegister@data      cstackCOMRAM 000006
 _ANSELBbits               (abs)        000F39
 _ANSELCbits               (abs)        000F3A
-_AntennaTX                text12       00FB00
-_InitModule               text9        00FCB0
-_InitRFLoRaPins           text8        00FADE
+_AntennaTX                text13       00FB8C
+_InitModule               text10       00FF08
+_InitRFLoRaPins           text9        00FB6A
 _LATBbits                 (abs)        000F8A
 _LATCbits                 (abs)        000F8B
 _PIR3bits                 (abs)        000FA4
-_ReadSXRegister           text6        00FB4E
-_ResetRFModule            text5        00FBBA
-_SPIInit                  text4        00FB30
-_SPIReceive               text7        00FB94
-_SPITransfer              text11       00FB70
+_ReadSXRegister           text3        00FBDA
+_ResetRFModule            text8        00FC46
+_SPIInit                  text7        00FBBC
+_SPIReceive               text4        00FC20
+_SPITransfer              text12       00FBFC
 _SSP2BUF                  (abs)        000F6F
 _SSP2CON1                 (abs)        000F6C
 _SSP2STATbits             (abs)        000F6D
 _TRISBbits                (abs)        000F93
 _TRISCbits                (abs)        000F94
-_WriteSXRegister          text10       00FB16
+_WriteSXRegister          text11       00FBA2
 __CFG_BOREN$SBORDIS       (abs)        000000
 __CFG_BORV$190            (abs)        000000
 __CFG_CCP2MX$PORTC1       (abs)        000000
@@ -342,6 +348,8 @@ __Htext1                  text1        000000
 __Htext10                 text10       000000
 __Htext11                 text11       000000
 __Htext12                 text12       000000
+__Htext13                 text13       000000
+__Htext14                 text14       000000
 __Htext2                  text2        000000
 __Htext3                  text3        000000
 __Htext4                  text4        000000
@@ -423,6 +431,8 @@ __Ltext1                  text1        000000
 __Ltext10                 text10       000000
 __Ltext11                 text11       000000
 __Ltext12                 text12       000000
+__Ltext13                 text13       000000
+__Ltext14                 text14       000000
 __Ltext2                  text2        000000
 __Ltext3                  text3        000000
 __Ltext4                  text4        000000
@@ -441,39 +451,43 @@ ___rparam_used            (abs)        000001
 ___sp                     stack        000000
 __accesstop               (abs)        000060
 __activetblptr            (abs)        000000
-__end_of_AntennaTX        text12       00FB16
-__end_of_InitModule       text9        00FDA8
-__end_of_InitRFLoRaPins   text8        00FAEE
-__end_of_ReadSXRegister   text6        00FB70
-__end_of_ResetRFModule    text5        00FBE2
-__end_of_SPIInit          text4        00FB4E
-__end_of_SPIReceive       text7        00FBBA
-__end_of_SPITransfer      text11       00FB94
-__end_of_WriteSXRegister  text10       00FB30
-__end_of__initialization  cinit        00FAFA
-__end_of_askForId         text3        00FC22
-__end_of_main             text0        010000
-__end_of_sendData         text2        00FC66
-__end_of_strcpy           text1        00FCB0
-__initialization          cinit        00FAEE
+__end_of_AntennaTX        text13       00FBA2
+__end_of_InitModule       text10       010000
+__end_of_InitRFLoRaPins   text9        00FB7A
+__end_of_ReadSXRegister   text3        00FBFC
+__end_of_ResetRFModule    text8        00FC6E
+__end_of_SPIInit          text7        00FBDA
+__end_of_SPIReceive       text4        00FC46
+__end_of_SPITransfer      text12       00FC20
+__end_of_WriteSXRegister  text11       00FBBC
+__end_of__initialization  cinit        00FB86
+__end_of_askForId         text14       00FCAE
+__end_of_initLoRaTx       text6        00FCF2
+__end_of_main             text0        00FF08
+__end_of_sendData         text5        00FD36
+__end_of_sendLoRaData     text1        00FE2E
+__end_of_strcpy           text2        00FD80
+__initialization          cinit        00FB7A
 __mediumconst             mediumconst  000000
-__pbssCOMRAM              bssCOMRAM    000049
-__pcinit                  cinit        00FAEE
+__pbssCOMRAM              bssCOMRAM    000046
+__pcinit                  cinit        00FB7A
 __pcstackBANK1            cstackBANK1  000100
 __pcstackCOMRAM           cstackCOMRAM 000001
-__ptext0                  text0        00FDA8
-__ptext1                  text1        00FC66
-__ptext10                 text10       00FB16
-__ptext11                 text11       00FB70
-__ptext12                 text12       00FB00
-__ptext2                  text2        00FC22
-__ptext3                  text3        00FBE2
-__ptext4                  text4        00FB30
-__ptext5                  text5        00FBBA
-__ptext6                  text6        00FB4E
-__ptext7                  text7        00FB94
-__ptext8                  text8        00FADE
-__ptext9                  text9        00FCB0
+__ptext0                  text0        00FE2E
+__ptext1                  text1        00FD80
+__ptext10                 text10       00FF08
+__ptext11                 text11       00FBA2
+__ptext12                 text12       00FBFC
+__ptext13                 text13       00FB8C
+__ptext14                 text14       00FC6E
+__ptext2                  text2        00FD36
+__ptext3                  text3        00FBDA
+__ptext4                  text4        00FC20
+__ptext5                  text5        00FCF2
+__ptext6                  text6        00FCAE
+__ptext7                  text7        00FBBC
+__ptext8                  text8        00FC46
+__ptext9                  text9        00FB6A
 __ramtop                  ramtop       001000
 __size_of_AntennaTX       (abs)        000000
 __size_of_InitModule      (abs)        000000
@@ -485,38 +499,42 @@ __size_of_SPIReceive      (abs)        000000
 __size_of_SPITransfer     (abs)        000000
 __size_of_WriteSXRegister (abs)        000000
 __size_of_askForId        (abs)        000000
+__size_of_initLoRaTx      (abs)        000000
 __size_of_main            (abs)        000000
 __size_of_sendData        (abs)        000000
+__size_of_sendLoRaData    (abs)        000000
 __size_of_strcpy          (abs)        000000
 __smallconst              smallconst   000000
-_askForId                 text3        00FBE2
-_main                     text0        00FDA8
-_sendData                 text2        00FC22
-_strcpy                   text1        00FC66
+_askForId                 text14       00FC6E
+_initLoRaTx               text6        00FCAE
+_main                     text0        00FE2E
+_sendData                 text5        00FCF2
+_sendLoRaData             text1        00FD80
+_strcpy                   text2        00FD36
 askForId@ds               cstackCOMRAM 00000B
-end_of_initialization     cinit        00FAFA
+end_of_initialization     cinit        00FB86
 intlevel0                 text         000000
 intlevel1                 text         000000
 intlevel2                 text         000000
 intlevel3                 text         000000
-main@F6299                bssCOMRAM    000054
-main@F6302                bssCOMRAM    000049
-main@ds                   cstackCOMRAM 000034
-main@i                    cstackCOMRAM 000032
-main@i_679                cstackCOMRAM 000033
-main@ss                   cstackCOMRAM 00003E
-main@txBuffer             cstackBANK1  000100
-main@txMsg                cstackCOMRAM 000028
-main@txMsg1               cstackCOMRAM 00001D
+main@F6301                bssCOMRAM    000051
+main@F6304                bssCOMRAM    000046
+main@ds                   cstackCOMRAM 000031
+main@ss                   cstackCOMRAM 00003B
+main@txMsg                cstackCOMRAM 000027
+main@txMsg1               cstackCOMRAM 00001C
 sendData@battery          cstackCOMRAM 000006
 sendData@data             cstackCOMRAM 000004
 sendData@id               cstackCOMRAM 000001
 sendData@messageNumber    cstackCOMRAM 000003
 sendData@ss               cstackCOMRAM 00000C
+sendLoRaData@data         cstackCOMRAM 000009
+sendLoRaData@i            cstackCOMRAM 00000C
+sendLoRaData@txBuffer     cstackBANK1  000100
 stackhi                   (abs)        000F37
 stacklo                   (abs)        000200
 start                     init         000000
-start_initialization      cinit        00FAEE
+start_initialization      cinit        00FB7A
 strcpy@d                  cstackCOMRAM 000007
 strcpy@dest               cstackCOMRAM 000001
 strcpy@s                  cstackCOMRAM 000005
@@ -527,18 +545,15 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 86 in file "TX_LoRa.c"
+		line 84 in file "TX_LoRa.c"
  Parameters:    Size  Location     Type
   argc            2   22[COMRAM] int 
   argv            3   24[COMRAM] PTR PTR unsigned char 
  Auto vars:     Size  Location     Type
-  i               1   50[COMRAM] unsigned char 
-  i               1   49[COMRAM] unsigned char 
-  txBuffer      256    0[BANK1 ] unsigned char [256]
-  txMsg1         11   28[COMRAM] unsigned char [11]
-  ss             11   61[COMRAM] struct .
-  txMsg          10   39[COMRAM] unsigned char [10]
-  ds             10   51[COMRAM] struct .
+  txMsg1         11   27[COMRAM] unsigned char [11]
+  ss             11   58[COMRAM] struct .
+  txMsg          10   38[COMRAM] unsigned char [10]
+  ds             10   48[COMRAM] struct .
  Return value:  Size  Location     Type
                   2   22[COMRAM] int 
  Registers used:
@@ -549,24 +564,52 @@ FUNCTION INFORMATION:
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
       Params:         5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Locals:        44       0     256       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Totals:        50       0     256       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-Total ram usage:      306 bytes
- Hardware stack levels required when called:    3
+      Locals:        42       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:        47       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:       47 bytes
+ Hardware stack levels required when called:    4
  This function calls:
-		_AntennaTX
-		_InitModule
-		_InitRFLoRaPins
-		_ReadSXRegister
-		_ResetRFModule
-		_SPIInit
-		_WriteSXRegister
 		_askForId
+		_initLoRaTx
 		_sendData
-		_strcpy
+		_sendLoRaData
  This function is called by:
 		Startup code after reset
+ This function uses a non-reentrant model
+
+
+ *************** function _sendLoRaData *****************
+ Defined at:
+		line 28 in file "commLora.c"
+ Parameters:    Size  Location     Type
+  data            2    8[COMRAM] PTR unsigned char 
+		 -> main@txMsg1(11), main@txMsg(10), 
+ Auto vars:     Size  Location     Type
+  i               1   11[COMRAM] unsigned char 
+  txBuffer      256    0[BANK1 ] unsigned char [256]
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:         2       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         1       0     256       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         4       0     256       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:      260 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_ReadSXRegister
+		_WriteSXRegister
+		_strcpy
+ This function is called by:
+		_main
  This function uses a non-reentrant model
 
 
@@ -575,12 +618,12 @@ Total ram usage:      306 bytes
 		line 7 in file "/opt/microchip/xc8/v2.00/pic/sources/c99/common/strcpy.c"
  Parameters:    Size  Location     Type
   dest            2    0[COMRAM] PTR unsigned char 
-		 -> main@txBuffer(256), 
+		 -> sendLoRaData@txBuffer(256), 
   src             2    2[COMRAM] PTR const unsigned char 
 		 -> main@txMsg1(11), main@txMsg(10), 
  Auto vars:     Size  Location     Type
   d               2    6[COMRAM] PTR unsigned char 
-		 -> main@txBuffer(256), 
+		 -> sendLoRaData@txBuffer(256), 
   s               2    4[COMRAM] PTR const unsigned char 
 		 -> main@txMsg1(11), main@txMsg(10), 
  Return value:  Size  Location     Type
@@ -601,7 +644,70 @@ Total ram usage:        8 bytes
  This function calls:
 		Nothing
  This function is called by:
-		_main
+		_sendLoRaData
+ This function uses a non-reentrant model
+
+
+ *************** function _ReadSXRegister *****************
+ Defined at:
+		line 28 in file "SX1272.c"
+ Parameters:    Size  Location     Type
+  address         1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  address         1    4[COMRAM] unsigned char 
+  RegValue        1    3[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_SPIReceive
+		_SPITransfer
+ This function is called by:
+		_sendLoRaData
+ This function uses a non-reentrant model
+
+
+ *************** function _SPIReceive *****************
+ Defined at:
+		line 47 in file "spi.c"
+ Parameters:    Size  Location     Type
+  data_out        1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  data_out        1    1[COMRAM] unsigned char 
+  data_in         1    2[COMRAM] unsigned char 
+  dummy_byte      1    0[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_ReadSXRegister
  This function uses a non-reentrant model
 
 
@@ -637,30 +743,36 @@ Total ram usage:       22 bytes
  This function uses a non-reentrant model
 
 
- *************** function _askForId *****************
+ *************** function _initLoRaTx *****************
  Defined at:
-		line 6 in file "messageParser.c"
+		line 13 in file "commLora.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  ds             10   10[COMRAM] struct .
+		None
  Return value:  Size  Location     Type
-                  10    0[COMRAM] struct .
+                  1    wreg      void 
  Registers used:
-		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0
+		wreg, status,2, status,0, cstack
  Tracked objects:
 		On entry : 
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
-      Params:        10       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Locals:        10       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Totals:        20       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-Total ram usage:       20 bytes
+      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
  Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
  This function calls:
-		Nothing
+		_AntennaTX
+		_InitModule
+		_InitRFLoRaPins
+		_ResetRFModule
+		_SPIInit
+		_WriteSXRegister
  This function is called by:
 		_main
  This function uses a non-reentrant model
@@ -691,7 +803,7 @@ Total ram usage:        0 bytes
  This function calls:
 		Nothing
  This function is called by:
-		_main
+		_initLoRaTx
  This function uses a non-reentrant model
 
 
@@ -720,70 +832,7 @@ Total ram usage:        1 bytes
  This function calls:
 		Nothing
  This function is called by:
-		_main
- This function uses a non-reentrant model
-
-
- *************** function _ReadSXRegister *****************
- Defined at:
-		line 28 in file "SX1272.c"
- Parameters:    Size  Location     Type
-  address         1    wreg     unsigned char 
- Auto vars:     Size  Location     Type
-  address         1    4[COMRAM] unsigned char 
-  RegValue        1    3[COMRAM] unsigned char 
- Return value:  Size  Location     Type
-                  1    wreg      unsigned char 
- Registers used:
-		wreg, status,2, status,0, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
-      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		_SPIReceive
-		_SPITransfer
- This function is called by:
-		_main
- This function uses a non-reentrant model
-
-
- *************** function _SPIReceive *****************
- Defined at:
-		line 47 in file "spi.c"
- Parameters:    Size  Location     Type
-  data_out        1    wreg     unsigned char 
- Auto vars:     Size  Location     Type
-  data_out        1    1[COMRAM] unsigned char 
-  data_in         1    2[COMRAM] unsigned char 
-  dummy_byte      1    0[COMRAM] unsigned char 
- Return value:  Size  Location     Type
-                  1    wreg      unsigned char 
- Registers used:
-		wreg, status,2
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
-      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-Total ram usage:        3 bytes
- Hardware stack levels used:    1
- This function calls:
-		Nothing
- This function is called by:
-		_ReadSXRegister
+		_initLoRaTx
  This function uses a non-reentrant model
 
 
@@ -812,7 +861,7 @@ Total ram usage:        0 bytes
  This function calls:
 		Nothing
  This function is called by:
-		_main
+		_initLoRaTx
  This function uses a non-reentrant model
 
 
@@ -842,7 +891,7 @@ Total ram usage:        1 bytes
  This function calls:
 		_WriteSXRegister
  This function is called by:
-		_main
+		_initLoRaTx
  This function uses a non-reentrant model
 
 
@@ -874,7 +923,8 @@ Total ram usage:        2 bytes
 		_SPITransfer
  This function is called by:
 		_InitModule
-		_main
+		_initLoRaTx
+		_sendLoRaData
  This function uses a non-reentrant model
 
 
@@ -934,6 +984,35 @@ Total ram usage:        1 bytes
  This function calls:
 		Nothing
  This function is called by:
+		_initLoRaTx
+ This function uses a non-reentrant model
+
+
+ *************** function _askForId *****************
+ Defined at:
+		line 6 in file "messageParser.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  ds             10   10[COMRAM] struct .
+ Return value:  Size  Location     Type
+                  10    0[COMRAM] struct .
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:        10       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:        10       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:        20       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:       20 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
 		_main
  This function uses a non-reentrant model
 
@@ -942,45 +1021,51 @@ Total ram usage:        1 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
+commLora.c
+		_sendLoRaData  		CODE           	FD80	0000	175
+		_initLoRaTx    		CODE           	FCAE	0000	69
+
+commLora.c estimated size: 244
+
 messageParser.c
-		_sendData      		CODE           	FC22	0000	69
-		_askForId      		CODE           	FBE2	0000	65
+		_sendData      		CODE           	FCF2	0000	69
+		_askForId      		CODE           	FC6E	0000	65
 
 messageParser.c estimated size: 134
 
 SX1272.c
-		_ReadSXRegister		CODE           	FB4E	0000	35
-		_InitModule    		CODE           	FCB0	0000	249
-		_WriteSXRegister		CODE           	FB16	0000	27
+		_ReadSXRegister		CODE           	FBDA	0000	35
+		_InitModule    		CODE           	FF08	0000	249
+		_WriteSXRegister		CODE           	FBA2	0000	27
 
 SX1272.c estimated size: 311
 
 spi.c
-		_SPITransfer   		CODE           	FB70	0000	37
-		_SPIReceive    		CODE           	FB94	0000	39
-		_SPIInit       		CODE           	FB30	0000	31
+		_SPITransfer   		CODE           	FBFC	0000	37
+		_SPIReceive    		CODE           	FC20	0000	39
+		_SPIInit       		CODE           	FBBC	0000	31
 
 spi.c estimated size: 107
 
 shared
-		__initialization		CODE           	FAEE	0000	13
+		__initialization		CODE           	FB7A	0000	13
 
 shared estimated size: 13
 
 RF_LoRa_868_SO.c
-		_ResetRFModule 		CODE           	FBBA	0000	41
-		_AntennaTX     		CODE           	FB00	0000	23
-		_InitRFLoRaPins		CODE           	FADE	0000	17
+		_ResetRFModule 		CODE           	FC46	0000	41
+		_AntennaTX     		CODE           	FB8C	0000	23
+		_InitRFLoRaPins		CODE           	FB6A	0000	17
 
 RF_LoRa_868_SO.c estimated size: 81
 
 /opt/microchip/xc8/v2.00/pic/sources/c99/common/strcpy.c
-		_strcpy        		CODE           	FC66	0000	75
+		_strcpy        		CODE           	FD36	0000	75
 
 /opt/microchip/xc8/v2.00/pic/sources/c99/common/strcpy.c estimated size: 75
 
 TX_LoRa.c
-		_main          		CODE           	FDA8	0000	601
+		_main          		CODE           	FE2E	0000	219
 
-TX_LoRa.c estimated size: 601
+TX_LoRa.c estimated size: 219
 
