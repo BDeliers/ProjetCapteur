@@ -22,6 +22,7 @@
         <itemPath>timer0.h</itemPath>
         <itemPath>volt.h</itemPath>
         <itemPath>eeprom.h</itemPath>
+        <itemPath>commLora.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -48,6 +49,7 @@
         <itemPath>i2c.c</itemPath>
         <itemPath>VEML7700.c</itemPath>
         <itemPath>timer0.c</itemPath>
+        <itemPath>commLora.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
