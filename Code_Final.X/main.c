@@ -98,35 +98,37 @@ __persistent UINT16_T nWakes = 0;
 UINT8_T stopLoop = 0;
 
 void __interrupt() timer0_ISR(void){
-/*  si l'on souhaite utiliser les 2 niveaux de priorit?:
-
-void __interrupt(high_priority) timer0_ISR(void){
-//ou
-void __interrupt(low_priority) timer0_ISR(void){
-	
- */
     if (INTCONbits.TMR0IF == 1){     // v?rifie si l'interruption est bien provoqu?e par le timer0
         // Exit the rx loop
         stopLoop = 1;
+        
+        UARTWriteStrLn("Interrupted");
     }
 }
 
 int main(int argc, char** argv) {
+    // Configure internal oscillator at 1MHz
+    OSCCON = 0b10110111;    // Idle enabled, 1MHz, Internal oscillator, Stable frequency, Internal oscillator
+    
     // Rx buffer
     UINT8_T buff[256];
     
-    // Configure internal oscillator at 1MHz
-    OSCCON = 0b10110111;    // Idle enabled, 1MHz, Internal oscillator, Stable frequency, Internal oscillator
+    // Init UART for debug
+    UARTInit(19200);
+    UARTWriteStrLn("Starting main code");    
     
     // Reset watchdog
     WDTCONbits.SWDTEN = CLEAR;
     
+    UARTWriteStrLn("Blink LED");    
     // Blink LED for start
     LED_DIR = OUTP;
     LED_STATE = ON;
     
     // If we resume thanks to watchdog
     if(!RCONbits.TO) {
+        UARTWriteStrLn("Resumed by Watchdog");
+        
         // Get sleep time in EEPROM
         UINT8_T sleepMsb = eepromRead(0x00, 0x03);
         UINT8_T sleepLsb = eepromRead(0x00, 0x04);
@@ -134,6 +136,8 @@ int main(int argc, char** argv) {
         
         // If we're supposed to sleep again
         if(nWakes < sleepFull - 2) {
+            UARTWriteStrLn("Get back to sleep");
+            
             nWakes = nWakes+1;
             
             // Sleep until watchdog wakes up
@@ -145,6 +149,7 @@ int main(int argc, char** argv) {
         // Else
         else {            
             nWakes = 0;
+            UARTWriteStrLn("Wake up");
         }
     }
     
@@ -153,6 +158,8 @@ int main(int argc, char** argv) {
     
     // If we have no ID
     if(!configured) {
+        UARTWriteStrLn("Not configured yet");
+        
         // Blink LED
         __delay_ms(200);
         LED_STATE = OFF;
@@ -168,14 +175,19 @@ int main(int argc, char** argv) {
         UINT8_T discover[10] = {ds.identification[0], ds.identification[1], ds.protocol[0], ds.protocol[1], ds.messageType, ds.messageNumber, ds.componentType[0], ds.componentType[1], ds.version[0], ds.version[1]};
     
         // Send it
+        UARTWriteStrLn("Send ID request");
+        
         initLoRaTx();
         sendLoRaData(discover);
 
         // Wait to receive response
         while(!configured) {
+            UARTWriteStrLn("Ready to receive answer");
             initLoRaRx();
 
             forever {
+                UARTWriteStrLn("Waiting for answer");
+                
                 // Get received data
                 readLoRaData(buff);
                 
@@ -186,6 +198,8 @@ int main(int argc, char** argv) {
                 if(resp.identification[0] == 0x26 && resp.identification[1] == 0x42) {
                     // If valid message type and it's our identification asking
                     if(resp.messageType == 0x01 && resp.messageNumber == 0xc0) {
+                        UARTWriteStrLn("Valid message, configuring...");
+                        
                         // Store the ID
                         eepromWriteFull(0x00, 0x01, resp.id[0]);
                         eepromWriteFull(0x00, 0x02, resp.id[1]);
@@ -213,6 +227,8 @@ int main(int argc, char** argv) {
     }
     
     // Now we're sure we have an ID
+    UARTWriteStrLn("We have an ID");
+    
     // Blink LED slowly
     LED_STATE = ON;
     __delay_ms(600);
@@ -230,6 +246,7 @@ int main(int argc, char** argv) {
     UINT16_T idFull = ((UINT16_T)idMsb << 8) | idLsb;
     
     // Measure luminosity
+    UARTWriteStrLn("Measuring luminosity");
     UINT16_T measure;
     
     i2c_init();
@@ -239,6 +256,7 @@ int main(int argc, char** argv) {
     measure = luxConversion(measure);
     
     // Measure battery
+    UARTWriteStrLn("Measuring battery");
     UINT8_T battery = readVoltage();
     battery = toPercentage(battery);
     
@@ -258,12 +276,14 @@ int main(int argc, char** argv) {
     UINT16_T timeoutFull = ((UINT16_T)timeoutMsb << 8) | timeoutLsb; 
     
     // Start a timeout timer
+    UARTWriteStrLn("Starting timeout timer");
     startTimer(timeoutLsb);
     
     // Number of sending retries
     UINT8_T retries = 0;
     
     while(retries < nRetries) {
+        UARTWriteStrLn("Sending statement");
         
         // Send statement
         initLoRaTx();
@@ -274,6 +294,8 @@ int main(int argc, char** argv) {
         
         // While we didn't received our response
         forever {
+            UARTWriteStrLn("Waiting for answer");
+            
             // If we are under timeout
             if (stopLoop == 0) {
                 // Get received data
@@ -286,6 +308,8 @@ int main(int argc, char** argv) {
                 if(resp.identification[0] == 0x26 && resp.identification[1] == 0x42) {
                     // If valid message type and it's our message, we exit the forever
                     if(resp.messageType == 0x02 && resp.messageNumber == messNum) {
+                        UARTWriteStrLn("Valid answer received");
+                        
                         // Store the standby delay
                         eepromWriteFull(0x00, 0x03, resp.standby[0]);
                         eepromWriteFull(0x00, 0x04, resp.standby[1]);
@@ -304,12 +328,16 @@ int main(int argc, char** argv) {
             }
             // If we had a timeout
             else {
+                UARTWriteStrLn("Timeout !");
+                
                 stopLoop = 0;
                 retries = retries + 1;
                 break;
             }
         }
     }
+    
+    UARTWriteStrLn("Going to sleep");
     
     // Increment message number in EEPROM
     eepromWriteFull(0x00, 0x08, messNum+1);    
