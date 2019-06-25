@@ -10,7 +10,7 @@
 
 #include "commLora.h"
 
-void initLoRaTx(void) {
+void initLoRaTx() {
     InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
     SPIInit();                  // init SPI   
     ResetRFModule();            // reset the RF Solutions LoRa module (should be optional since Power On Reset is implemented)

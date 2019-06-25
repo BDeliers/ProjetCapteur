@@ -125,6 +125,9 @@ int main(int argc, char** argv) {
     LED_DIR = OUTP;
     LED_STATE = ON;
     
+    UARTWriteStrLn("Resetting configured register");
+    eepromWriteData(0x00, 0x00, 0x00);
+    
     // If we resume thanks to watchdog
     if(!RCONbits.TO) {
         UARTWriteStrLn("Resumed by Watchdog");
@@ -173,7 +176,9 @@ int main(int argc, char** argv) {
         // Ask for an ID
         discoverSend ds = askForId();
         UINT8_T discover[10] = {ds.identification[0], ds.identification[1], ds.protocol[0], ds.protocol[1], ds.messageType, ds.messageNumber, ds.componentType[0], ds.componentType[1], ds.version[0], ds.version[1]};
-    
+        //UINT8_T discover[10] = "BONJOUR-JU";
+        //UINT8_T discover[10] = {0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49};
+        
         // Send it
         UARTWriteStrLn("Send ID request");
         

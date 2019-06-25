@@ -22,17 +22,17 @@ UINT8_T readVoltage(void){
 }
 
 UINT8_T toPercentage(UINT8_T value){
-    if (value > 159)
+    if (value > 235)
         return(100);
-    if (151 <= value && value < 159)
+    if (225 <= value && value < 235)
         return(80);
-    if (147 <= value && value < 151)
+    if (215 <= value && value < 225)
         return(60);
-    if (143 <= value && value < 147)
+    if (205 <= value && value < 215)
         return(40);
-    if (139 <= value && value < 143)
+    if (190 <= value && value < 205)
         return(20);           
-    if (135 <= value && value < 139)
-        return(10);
+    if (value < 190)
+        return(5);
     else return(0);
 }

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=spi.c RF_LoRa_868_SO.c messageParser.c SX1272.c uart.c volt.c i2c.c VEML7700.c timer0.c commLora.c main.c internalEEPROM.c
+SOURCEFILES_QUOTED_IF_SPACED=spi.c RF_LoRa_868_SO.c messageParser.c SX1272.c uart.c volt.c i2c.c VEML7700.c timer0.c commLora.c internalEEPROM.c main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/spi.p1 ${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/messageParser.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/uart.p1 ${OBJECTDIR}/volt.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/VEML7700.p1 ${OBJECTDIR}/timer0.p1 ${OBJECTDIR}/commLora.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/internalEEPROM.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/spi.p1.d ${OBJECTDIR}/RF_LoRa_868_SO.p1.d ${OBJECTDIR}/messageParser.p1.d ${OBJECTDIR}/SX1272.p1.d ${OBJECTDIR}/uart.p1.d ${OBJECTDIR}/volt.p1.d ${OBJECTDIR}/i2c.p1.d ${OBJECTDIR}/VEML7700.p1.d ${OBJECTDIR}/timer0.p1.d ${OBJECTDIR}/commLora.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/internalEEPROM.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/spi.p1 ${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/messageParser.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/uart.p1 ${OBJECTDIR}/volt.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/VEML7700.p1 ${OBJECTDIR}/timer0.p1 ${OBJECTDIR}/commLora.p1 ${OBJECTDIR}/internalEEPROM.p1 ${OBJECTDIR}/main.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/spi.p1.d ${OBJECTDIR}/RF_LoRa_868_SO.p1.d ${OBJECTDIR}/messageParser.p1.d ${OBJECTDIR}/SX1272.p1.d ${OBJECTDIR}/uart.p1.d ${OBJECTDIR}/volt.p1.d ${OBJECTDIR}/i2c.p1.d ${OBJECTDIR}/VEML7700.p1.d ${OBJECTDIR}/timer0.p1.d ${OBJECTDIR}/commLora.p1.d ${OBJECTDIR}/internalEEPROM.p1.d ${OBJECTDIR}/main.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/spi.p1 ${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/messageParser.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/uart.p1 ${OBJECTDIR}/volt.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/VEML7700.p1 ${OBJECTDIR}/timer0.p1 ${OBJECTDIR}/commLora.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/internalEEPROM.p1
+OBJECTFILES=${OBJECTDIR}/spi.p1 ${OBJECTDIR}/RF_LoRa_868_SO.p1 ${OBJECTDIR}/messageParser.p1 ${OBJECTDIR}/SX1272.p1 ${OBJECTDIR}/uart.p1 ${OBJECTDIR}/volt.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/VEML7700.p1 ${OBJECTDIR}/timer0.p1 ${OBJECTDIR}/commLora.p1 ${OBJECTDIR}/internalEEPROM.p1 ${OBJECTDIR}/main.p1
 
 # Source Files
-SOURCEFILES=spi.c RF_LoRa_868_SO.c messageParser.c SX1272.c uart.c volt.c i2c.c VEML7700.c timer0.c commLora.c main.c internalEEPROM.c
+SOURCEFILES=spi.c RF_LoRa_868_SO.c messageParser.c SX1272.c uart.c volt.c i2c.c VEML7700.c timer0.c commLora.c internalEEPROM.c main.c
 
 
 CFLAGS=
@@ -173,14 +173,6 @@ ${OBJECTDIR}/commLora.p1: commLora.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/commLora.d ${OBJECTDIR}/commLora.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/commLora.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/main.p1.d 
-	@${RM} ${OBJECTDIR}/main.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/main.p1 main.c 
-	@-${MV} ${OBJECTDIR}/main.d ${OBJECTDIR}/main.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/internalEEPROM.p1: internalEEPROM.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/internalEEPROM.p1.d 
@@ -188,6 +180,14 @@ ${OBJECTDIR}/internalEEPROM.p1: internalEEPROM.c  nbproject/Makefile-${CND_CONF}
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/internalEEPROM.p1 internalEEPROM.c 
 	@-${MV} ${OBJECTDIR}/internalEEPROM.d ${OBJECTDIR}/internalEEPROM.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/internalEEPROM.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/main.p1.d 
+	@${RM} ${OBJECTDIR}/main.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/main.p1 main.c 
+	@-${MV} ${OBJECTDIR}/main.d ${OBJECTDIR}/main.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/spi.p1: spi.c  nbproject/Makefile-${CND_CONF}.mk
@@ -270,14 +270,6 @@ ${OBJECTDIR}/commLora.p1: commLora.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/commLora.d ${OBJECTDIR}/commLora.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/commLora.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/main.p1.d 
-	@${RM} ${OBJECTDIR}/main.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/main.p1 main.c 
-	@-${MV} ${OBJECTDIR}/main.d ${OBJECTDIR}/main.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/internalEEPROM.p1: internalEEPROM.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/internalEEPROM.p1.d 
@@ -285,6 +277,14 @@ ${OBJECTDIR}/internalEEPROM.p1: internalEEPROM.c  nbproject/Makefile-${CND_CONF}
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/internalEEPROM.p1 internalEEPROM.c 
 	@-${MV} ${OBJECTDIR}/internalEEPROM.d ${OBJECTDIR}/internalEEPROM.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/internalEEPROM.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/main.p1.d 
+	@${RM} ${OBJECTDIR}/main.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/main.p1 main.c 
+	@-${MV} ${OBJECTDIR}/main.d ${OBJECTDIR}/main.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
