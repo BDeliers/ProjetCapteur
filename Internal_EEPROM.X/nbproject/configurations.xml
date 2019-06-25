@@ -4,26 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <logicalFolder name="Code_Final.X"
-                     displayName="Code_Final.X"
-                     projectFiles="true">
-        <logicalFolder name="debug" displayName="debug" projectFiles="true">
-          <logicalFolder name="default" displayName="default" projectFiles="true">
-          </logicalFolder>
-        </logicalFolder>
-        <itemPath>spi.h</itemPath>
-        <itemPath>uart.h</itemPath>
-        <itemPath>messageParser.h</itemPath>
-        <itemPath>SX1272.h</itemPath>
-        <itemPath>i2c.h</itemPath>
-        <itemPath>VEML7700.h</itemPath>
-        <itemPath>RF_LoRa_868_SO.h</itemPath>
-        <itemPath>general.h</itemPath>
-        <itemPath>timer0.h</itemPath>
-        <itemPath>volt.h</itemPath>
-        <itemPath>commLora.h</itemPath>
-        <itemPath>internalEEPROM.h</itemPath>
-      </logicalFolder>
+      <itemPath>internalEEPROM.h</itemPath>
+      <itemPath>general.h</itemPath>
+      <itemPath>uart.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -32,26 +15,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <logicalFolder name="Code_Final.X"
-                     displayName="Code_Final.X"
-                     projectFiles="true">
-        <logicalFolder name="debug" displayName="debug" projectFiles="true">
-          <logicalFolder name="default" displayName="default" projectFiles="true">
-          </logicalFolder>
-        </logicalFolder>
-        <itemPath>spi.c</itemPath>
-        <itemPath>RF_LoRa_868_SO.c</itemPath>
-        <itemPath>messageParser.c</itemPath>
-        <itemPath>SX1272.c</itemPath>
-        <itemPath>uart.c</itemPath>
-        <itemPath>volt.c</itemPath>
-        <itemPath>i2c.c</itemPath>
-        <itemPath>VEML7700.c</itemPath>
-        <itemPath>timer0.c</itemPath>
-        <itemPath>commLora.c</itemPath>
-        <itemPath>internalEEPROM.c</itemPath>
-      </logicalFolder>
       <itemPath>main.c</itemPath>
+      <itemPath>internalEEPROM.c</itemPath>
+      <itemPath>uart.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -59,9 +25,6 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
-  <sourceRootList>
-    <Elem>.</Elem>
-  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
@@ -203,7 +166,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-ffff"/>
-        <property key="poweroptions.powerenable" value="false"/>
+        <property key="poweroptions.powerenable" value="true"/>
         <property key="programmertogo.imagename" value=""/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
@@ -221,7 +184,7 @@
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="programoptions.usehighvoltageonmclr" value="false"/>
         <property key="programoptions.uselvpprogramming" value="false"/>
-        <property key="voltagevalue" value="5.0"/>
+        <property key="voltagevalue" value="3.25"/>
       </PICkit3PlatformTool>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>

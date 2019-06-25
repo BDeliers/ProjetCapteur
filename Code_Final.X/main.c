@@ -11,7 +11,7 @@
 
 #include "string.h"
 #include "general.h"
-#include "eeprom.h"
+#include "internalEEPROM.h"
 #include "i2c.h"
 #include "messageParser.h"
 #include "SX1272.h"
@@ -130,8 +130,8 @@ int main(int argc, char** argv) {
         UARTWriteStrLn("Resumed by Watchdog");
         
         // Get sleep time in EEPROM
-        UINT8_T sleepMsb = eepromRead(0x00, 0x03);
-        UINT8_T sleepLsb = eepromRead(0x00, 0x04);
+        UINT8_T sleepMsb = eepromReadData(0x00, 0x03);
+        UINT8_T sleepLsb = eepromReadData(0x00, 0x04);
         UINT16_T sleepFull = ((UINT16_T) sleepMsb << 8) | sleepLsb;
         
         // If we're supposed to sleep again
@@ -154,7 +154,7 @@ int main(int argc, char** argv) {
     }
     
     // Check if we already have an ID
-    UINT8_T configured = eepromRead(0x00, 0x00);
+    UINT8_T configured = eepromReadData(0x00, 0x00);
     
     // If we have no ID
     if(!configured) {
@@ -201,22 +201,22 @@ int main(int argc, char** argv) {
                         UARTWriteStrLn("Valid message, configuring...");
                         
                         // Store the ID
-                        eepromWriteFull(0x00, 0x01, resp.id[0]);
-                        eepromWriteFull(0x00, 0x02, resp.id[1]);
+                        eepromWriteData(0x00, 0x01, resp.id[0]);
+                        eepromWriteData(0x00, 0x02, resp.id[1]);
                         
                         // Store the standby delay
-                        eepromWriteFull(0x00, 0x03, resp.standby[0]);
-                        eepromWriteFull(0x00, 0x04, resp.standby[1]);
+                        eepromWriteData(0x00, 0x03, resp.standby[0]);
+                        eepromWriteData(0x00, 0x04, resp.standby[1]);
                         
                         // Store the timeout delay
-                        eepromWriteFull(0x00, 0x05, resp.timeout[0]);
-                        eepromWriteFull(0x00, 0x06, resp.timeout[1]);
+                        eepromWriteData(0x00, 0x05, resp.timeout[0]);
+                        eepromWriteData(0x00, 0x06, resp.timeout[1]);
                         
                         // Store number of retries
-                        eepromWriteFull(0x00, 0x07, resp.retries);
+                        eepromWriteData(0x00, 0x07, resp.retries);
 
                         // Store that we are configured
-                        eepromWriteFull(0x00, 0x00, 1);
+                        eepromWriteData(0x00, 0x00, 1);
                         configured = 1; 
                         
                         break;
@@ -241,8 +241,8 @@ int main(int argc, char** argv) {
     LED_STATE = ON;
     
     // Get ID in EEPROM
-    UINT8_T idLsb = eepromRead(0x00, 0x02);
-    UINT8_T idMsb = eepromRead(0x00, 0x01);
+    UINT8_T idLsb = eepromReadData(0x00, 0x02);
+    UINT8_T idMsb = eepromReadData(0x00, 0x01);
     UINT16_T idFull = ((UINT16_T)idMsb << 8) | idLsb;
     
     // Measure luminosity
@@ -261,18 +261,18 @@ int main(int argc, char** argv) {
     battery = toPercentage(battery);
     
     // Get next message number
-    UINT8_T messNum = eepromRead(0x00, 0x08);
+    UINT8_T messNum = eepromReadData(0x00, 0x08);
     
     // Prepare a message structure
     statementSend mess = sendData(idFull, messNum, measure, battery);
     UINT8_T statement[11] = {mess.identification[0], mess.identification[1], mess.protocol[0], mess.protocol[1], mess.messageType, mess.messageNumber, mess.id[0], mess.id[1], mess.data[0], mess.data[1], mess.battery};
     
     // Get number of retries
-    UINT8_T nRetries = eepromRead(0x00, 0x07);
+    UINT8_T nRetries = eepromReadData(0x00, 0x07);
     
     // Get timeout delay in EEPROM
-    UINT8_T timeoutMsb = eepromRead(0x00, 0x05);
-    UINT8_T timeoutLsb = eepromRead(0x00, 0x06);
+    UINT8_T timeoutMsb = eepromReadData(0x00, 0x05);
+    UINT8_T timeoutLsb = eepromReadData(0x00, 0x06);
     UINT16_T timeoutFull = ((UINT16_T)timeoutMsb << 8) | timeoutLsb; 
     
     // Start a timeout timer
@@ -311,15 +311,15 @@ int main(int argc, char** argv) {
                         UARTWriteStrLn("Valid answer received");
                         
                         // Store the standby delay
-                        eepromWriteFull(0x00, 0x03, resp.standby[0]);
-                        eepromWriteFull(0x00, 0x04, resp.standby[1]);
+                        eepromWriteData(0x00, 0x03, resp.standby[0]);
+                        eepromWriteData(0x00, 0x04, resp.standby[1]);
 
                         // Store the timeout delay
-                        eepromWriteFull(0x00, 0x05, resp.timeout[0]);
-                        eepromWriteFull(0x00, 0x06, resp.timeout[1]);
+                        eepromWriteData(0x00, 0x05, resp.timeout[0]);
+                        eepromWriteData(0x00, 0x06, resp.timeout[1]);
 
                         // Store number of retries
-                        eepromWriteFull(0x00, 0x07, resp.retries);
+                        eepromWriteData(0x00, 0x07, resp.retries);
 
                         // Exit both whiles
                         retries = nRetries;
@@ -340,7 +340,7 @@ int main(int argc, char** argv) {
     UARTWriteStrLn("Going to sleep");
     
     // Increment message number in EEPROM
-    eepromWriteFull(0x00, 0x08, messNum+1);    
+    eepromWriteData(0x00, 0x08, messNum+1);    
     
     // Power off LED
     LED_STATE = OFF;

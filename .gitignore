@@ -4,3 +4,4 @@
 *.out
 /Code_Final.X/dist/
 /TestFonctionsLoRa.X/dist/
+/Internal_EEPROM.X/dist/
