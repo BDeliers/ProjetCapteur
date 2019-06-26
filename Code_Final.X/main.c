@@ -159,8 +159,10 @@ int main(int argc, char** argv) {
     // Check if we already have an ID
     UINT8_T configured = eepromReadData(0x00, 0x00);
     
+    startTimer(20);
+    
     // If we have no ID
-    if(!configured) {
+    while(!configured) {
         UARTWriteStrLn("Not configured yet");
         
         // Blink LED
@@ -186,7 +188,7 @@ int main(int argc, char** argv) {
         sendLoRaData(discover);
 
         // Wait to receive response
-        while(!configured) {
+        while(!configured && stopLoop == 0) {
             UARTWriteStrLn("Ready to receive answer");
             initLoRaRx();
 
@@ -229,6 +231,7 @@ int main(int argc, char** argv) {
                 }
             }
         }
+        stopLoop = 0;
     }
     
     // Now we're sure we have an ID
