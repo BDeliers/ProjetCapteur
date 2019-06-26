@@ -110,9 +110,13 @@ void __interrupt() timer0_ISR(void){
 int main(int argc, char** argv) {
     // Configure internal oscillator at 1MHz
     OSCCON = 0b10110111;    // Idle enabled, 1MHz, Internal oscillator, Stable frequency, Internal oscillator
+    ei();
     
     // Rx buffer
     UINT8_T buff[256];
+    UINT8_T reg_val;                // when reading SX1272 registers, stores the content (variable read in main and typically  updated by ReadSXRegister function)
+    UINT8_T RXNumberOfBytes;        // to store the number of bytes received
+    UINT8_T i;
     
     // Init UART for debug
     UARTInit(19200);
@@ -160,8 +164,6 @@ int main(int argc, char** argv) {
     // Check if we already have an ID
     UINT8_T configured = eepromReadData(0x00, 0x00);
     
-    startTimer(20);
-    
     // If we have no ID
     while(!configured) {
         UARTWriteStrLn("Not configured yet");
@@ -196,7 +198,33 @@ int main(int argc, char** argv) {
                 UARTWriteStrLn("Waiting for answer");
                 
                 // Get received data
-                readLoRaData(buff);
+
+                startTimer(20);
+                // wait for valid header reception
+                reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                while ((reg_val & 0x10) == 0x00 && stopLoop == 0) {                  // check Valid Header flag (bit n°4)
+                    reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                }
+                
+                if(stopLoop == 1){
+                    break;
+                }
+
+                // wait for end of packet reception
+                reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                while ((reg_val & 0x40) == 0x00) {                  // check Packet Reception Complete flag (bit n°6)
+                    reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                }
+
+                // read received data
+                RXNumberOfBytes = ReadSXRegister(REG_RX_NB_BYTES);                              // read how many bytes have been received
+                WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_CURRENT_ADDR));   // to read FIFO at correct location, load REG_FIFO_ADDR_PTR with REG_FIFO_RX_CURRENT_ADDR value
+                for (i = 0; i < RXNumberOfBytes; i++) {
+                    buff[i] = ReadSXRegister(REG_FIFO);       // read FIFO
+                }
+
+                // reset all IRQs
+                WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag   
                 
                 // Parse received data
                 discoverReceived resp = parseDiscoverMessage(buff);
@@ -310,7 +338,32 @@ int main(int argc, char** argv) {
             // If we are under timeout
             if (stopLoop == 0) {
                 // Get received data
-                readLoRaData(buff);
+                
+                // wait for valid header reception
+                reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                while ((reg_val & 0x10) == 0x00 && stopLoop == 0) {                  // check Valid Header flag (bit n°4)
+                    reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                }
+ 
+                if(stopLoop == 1){
+                    break;
+                }
+                
+                // wait for end of packet reception
+                reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                while ((reg_val & 0x40) == 0x00) {                  // check Packet Reception Complete flag (bit n°6)
+                    reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+                }
+                
+                // read received data
+                RXNumberOfBytes = ReadSXRegister(REG_RX_NB_BYTES);                              // read how many bytes have been received
+                WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_CURRENT_ADDR));   // to read FIFO at correct location, load REG_FIFO_ADDR_PTR with REG_FIFO_RX_CURRENT_ADDR value
+                for (i = 0; i < RXNumberOfBytes; i++) {
+                    buff[i] = ReadSXRegister(REG_FIFO);       // read FIFO
+                }
+
+                // reset all IRQs
+                WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag   
                 
                 // Parse received data
                 statementReceived resp = parseStatementMessage(buff);
@@ -346,6 +399,7 @@ int main(int argc, char** argv) {
                 break;
             }
         }
+        stopLoop = 0;
     }
     T0CONbits.TMR0ON = OFF;
     

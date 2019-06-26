@@ -9,6 +9,8 @@
 #include <stdlib.h>
 
 #include "commLora.h"
+#include "timer0.h"
+#include "xc.h"
 
 void initLoRaTx() {
     InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
@@ -79,6 +81,7 @@ void readLoRaData(UINT8_T * buff) {
     uint8_t RXNumberOfBytes;        // to store the number of bytes received
     uint8_t i;
     
+    startTimer(20);
     // wait for valid header reception
     reg_val = ReadSXRegister(REG_IRQ_FLAGS);
     while ((reg_val & 0x10) == 0x00) {                  // check Valid Header flag (bit n°4)
