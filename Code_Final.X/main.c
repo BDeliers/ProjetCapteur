@@ -98,11 +98,12 @@ __persistent UINT16_T nWakes = 0;
 UINT8_T stopLoop = 0;
 
 void __interrupt() timer0_ISR(void){
-    if (INTCONbits.TMR0IF == 1){     // v?rifie si l'interruption est bien provoqu?e par le timer0
+    if (INTCONbits.TMR0IF == 1){     // verifie si l'interruption est bien provoquee par le timer0
         // Exit the rx loop
         stopLoop = 1;
         
         UARTWriteStrLn("Interrupted");
+        INTCONbits.TMR0IF = 0;
     }
 }
 
@@ -179,20 +180,19 @@ int main(int argc, char** argv) {
         discoverSend ds = askForId();
         UINT8_T discover[10] = {ds.identification[0], ds.identification[1], ds.protocol[0], ds.protocol[1], ds.messageType, ds.messageNumber, ds.componentType[0], ds.componentType[1], ds.version[0], ds.version[1]};
         //UINT8_T discover[10] = "BONJOUR-JU";
-        //UINT8_T discover[10] = {0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49};
         
         // Send it
         UARTWriteStrLn("Send ID request");
         
         initLoRaTx();
-        sendLoRaData(discover);
+        sendLoRaData(discover, 10);
 
         // Wait to receive response
         while(!configured && stopLoop == 0) {
             UARTWriteStrLn("Ready to receive answer");
             initLoRaRx();
 
-            forever {
+            while(stopLoop == 0) {
                 UARTWriteStrLn("Waiting for answer");
                 
                 // Get received data
@@ -233,6 +233,8 @@ int main(int argc, char** argv) {
         }
         stopLoop = 0;
     }
+    
+    T0CONbits.TMR0ON = OFF;
     
     // Now we're sure we have an ID
     UARTWriteStrLn("We have an ID");
@@ -283,10 +285,6 @@ int main(int argc, char** argv) {
     UINT8_T timeoutLsb = eepromReadData(0x00, 0x06);
     UINT16_T timeoutFull = ((UINT16_T)timeoutMsb << 8) | timeoutLsb; 
     
-    // Start a timeout timer
-    UARTWriteStrLn("Starting timeout timer");
-    startTimer(timeoutLsb);
-    
     // Number of sending retries
     UINT8_T retries = 0;
     
@@ -295,13 +293,18 @@ int main(int argc, char** argv) {
         
         // Send statement
         initLoRaTx();
-        sendLoRaData(statement);
+        sendLoRaData(statement, 11);
 
         // Get ready to receive data
         initLoRaRx();
         
+         // Start a timeout timer
+        UARTWriteStrLn("Starting timeout timer");
+        startTimer(timeoutLsb);
+        
+        
         // While we didn't received our response
-        forever {
+        while( stopLoop == 0) {
             UARTWriteStrLn("Waiting for answer");
             
             // If we are under timeout
@@ -344,6 +347,7 @@ int main(int argc, char** argv) {
             }
         }
     }
+    T0CONbits.TMR0ON = OFF;
     
     UARTWriteStrLn("Going to sleep");
     
