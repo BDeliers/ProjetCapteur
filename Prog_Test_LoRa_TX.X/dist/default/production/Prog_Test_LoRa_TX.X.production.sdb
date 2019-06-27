@@ -23,8 +23,6 @@
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 /opt/microchip/xc8/v2.00/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
-"7 /opt/microchip/xc8/v2.00/pic/sources/c99/common/strcpy.c
-[v _strcpy strcpy `(*.39uc  1 e 2 0 ]
 "15 /opt/microchip/xc8/v2.00/pic/sources/c99/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 /opt/microchip/xc8/v2.00/pic/sources/c99/common/Umul64.c
@@ -308,33 +306,24 @@
 [s S603 . 10 `[2]uc 1 identification 2 0 `[2]uc 1 protocol 2 2 `uc 1 messageType 1 4 `uc 1 messageNumber 1 5 `[2]uc 1 componentType 2 6 `[2]uc 1 version 2 8 ]
 "85
 [v main@ds ds `S603  1 a 10 48 ]
-[v main@F6301 F6301 `[10]uc  1 s 10 F6301 ]
+[v main@F6302 F6302 `[10]uc  1 s 10 F6302 ]
 "88
-[v main@F6304 F6304 `[11]uc  1 s 11 F6304 ]
+[v main@F6305 F6305 `[11]uc  1 s 11 F6305 ]
 "100
 } 0
 "28 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_TX.X/commLora.c
 [v _sendLoRaData sendLoRaData `(v  1 e 1 0 ]
 {
-"37
-[v sendLoRaData@i i `uc  1 a 1 11 ]
+"41
+[v sendLoRaData@i_763 i `uc  1 a 1 11 ]
+"33
+[v sendLoRaData@i i `uc  1 a 1 12 ]
 "29
 [v sendLoRaData@txBuffer txBuffer `[256]uc  1 a 256 0 ]
 "28
-[v sendLoRaData@data data `*.39uc  1 p 2 8 ]
-"50
-} 0
-"7 /opt/microchip/xc8/v2.00/pic/sources/c99/common/strcpy.c
-[v _strcpy strcpy `(*.39uc  1 e 2 0 ]
-{
-"14
-[v strcpy@d d `*.39uc  1 a 2 6 ]
-"13
-[v strcpy@s s `*.39Cuc  1 a 2 4 ]
-"7
-[v strcpy@dest dest `*.39uc  1 p 2 0 ]
-[v strcpy@src src `*.39Cuc  1 p 2 2 ]
-"18
+[v sendLoRaData@data data `*.39uc  1 p 2 7 ]
+[v sendLoRaData@size size `uc  1 p 1 9 ]
+"54
 } 0
 "28 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_TX.X/SX1272.c
 [v _ReadSXRegister ReadSXRegister `(uc  1 e 1 0 ]

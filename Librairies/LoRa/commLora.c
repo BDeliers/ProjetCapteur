@@ -9,8 +9,11 @@
 #include <stdlib.h>
 
 #include "commLora.h"
+#include "timer0.h"
+#include "xc.h"
+#include "uart.h"
 
-void initLoRaTx(void) {
+void initLoRaTx() {
     InitRFLoRaPins();           // configure pins for RF Solutions LoRa module   
     SPIInit();                  // init SPI   
     ResetRFModule();            // reset the RF Solutions LoRa module (should be optional since Power On Reset is implemented)
@@ -50,17 +53,23 @@ void initLoRaRx(void) {
     __delay_ms(100);                                    // delay required to start oscillator and PLL
 }
 
-void sendLoRaData(UINT8_T data[]) {
+void sendLoRaData(UINT8_T data[], UINT8_T size) {
     UINT8_T txBuffer[256];
     
-    strcpy((char*)txBuffer, (char*)data);               // load txBuffer with content of data
+    //strcpy((char*)txBuffer, (char*)data);               // load txBuffer with content of data
+    
+    for (UINT8_T i = 0; i < size; i++) {
+        txBuffer[i] = data[i];
+    }
 
     // load FIFO with data to transmit
     WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_TX_BASE_ADDR));      // FifiAddrPtr takes value of FifoTxBaseAddr
-    WriteSXRegister(REG_PAYLOAD_LENGTH_LORA, PAYLOAD_LENGTH);                       // set the number of bytes to transmit (PAYLOAD_LENGTH is defined in RF_LoRa868_SO.h)
-
-    for (UINT8_T i = 0; i < PAYLOAD_LENGTH; i++) {
-        WriteSXRegister(REG_FIFO, txBuffer[i]);         // load FIFO with data to transmit  
+    WriteSXRegister(REG_PAYLOAD_LENGTH_LORA, size);                       // set the number of bytes to transmit (PAYLOAD_LENGTH is defined in RF_LoRa868_SO.h)
+    
+    UARTWriteStrLn("Message sent :");
+    for (UINT8_T i = 0; i < size; i++) {
+        WriteSXRegister(REG_FIFO, txBuffer[i]);  // load FIFO with data to transmit
+        UARTWriteByteHex(txBuffer[i]);
     }
 
 
@@ -79,6 +88,7 @@ void readLoRaData(UINT8_T * buff) {
     uint8_t RXNumberOfBytes;        // to store the number of bytes received
     uint8_t i;
     
+    startTimer(20);
     // wait for valid header reception
     reg_val = ReadSXRegister(REG_IRQ_FLAGS);
     while ((reg_val & 0x10) == 0x00) {                  // check Valid Header flag (bit n°4)

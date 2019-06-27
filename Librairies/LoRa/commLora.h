@@ -12,7 +12,7 @@
 
 void initLoRaTx(void);
 void initLoRaRx(void);
-void sendLoRaData(UINT8_T data[]);
+void sendLoRaData(UINT8_T data[], UINT8_T size);
 void readLoRaData(UINT8_T * buff);
 
 #endif	/* COMM_LORA_H */

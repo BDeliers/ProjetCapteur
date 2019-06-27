@@ -181,7 +181,6 @@ int main(int argc, char** argv) {
         // Ask for an ID
         discoverSend ds = askForId();
         UINT8_T discover[10] = {ds.identification[0], ds.identification[1], ds.protocol[0], ds.protocol[1], ds.messageType, ds.messageNumber, ds.componentType[0], ds.componentType[1], ds.version[0], ds.version[1]};
-        //UINT8_T discover[10] = "BONJOUR-JU";
         
         // Send it
         UARTWriteStrLn("Send ID request");
@@ -215,12 +214,14 @@ int main(int argc, char** argv) {
                 while ((reg_val & 0x40) == 0x00) {                  // check Packet Reception Complete flag (bit n°6)
                     reg_val = ReadSXRegister(REG_IRQ_FLAGS);
                 }
-
+                
+                UARTWriteStrLn("Message received :");
                 // read received data
                 RXNumberOfBytes = ReadSXRegister(REG_RX_NB_BYTES);                              // read how many bytes have been received
                 WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_CURRENT_ADDR));   // to read FIFO at correct location, load REG_FIFO_ADDR_PTR with REG_FIFO_RX_CURRENT_ADDR value
                 for (i = 0; i < RXNumberOfBytes; i++) {
                     buff[i] = ReadSXRegister(REG_FIFO);       // read FIFO
+                    UARTWriteByteHex(buff[i]);
                 }
 
                 // reset all IRQs
@@ -264,6 +265,7 @@ int main(int argc, char** argv) {
     
     T0CONbits.TMR0ON = OFF;
     
+    
     // Now we're sure we have an ID
     UARTWriteStrLn("We have an ID");
     
@@ -288,10 +290,13 @@ int main(int argc, char** argv) {
     UINT16_T measure;
     
     i2c_init();
+    UARTWriteStrLn("I2C init");
     
+    i2c_start();
     configSensor(0x00, 0x00,0x00);
     measure = readLuminosity(0x04);
     measure = luxConversion(measure);
+    
     
     // Measure battery
     UARTWriteStrLn("Measuring battery");
@@ -355,11 +360,13 @@ int main(int argc, char** argv) {
                     reg_val = ReadSXRegister(REG_IRQ_FLAGS);
                 }
                 
+                UARTWriteStrLn("Message received :");
                 // read received data
                 RXNumberOfBytes = ReadSXRegister(REG_RX_NB_BYTES);                              // read how many bytes have been received
                 WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_RX_CURRENT_ADDR));   // to read FIFO at correct location, load REG_FIFO_ADDR_PTR with REG_FIFO_RX_CURRENT_ADDR value
                 for (i = 0; i < RXNumberOfBytes; i++) {
                     buff[i] = ReadSXRegister(REG_FIFO);       // read FIFO
+                    UARTWriteByteHex(buff[i]);
                 }
 
                 // reset all IRQs
@@ -387,6 +394,7 @@ int main(int argc, char** argv) {
 
                         // Exit both whiles
                         retries = nRetries;
+                        break;
                     }
                 }
             }

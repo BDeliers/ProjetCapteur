@@ -25,16 +25,20 @@ void initLoRaTx() {
     InitModule();
 }
 
-void sendLoRaData(UINT8_T data[]) {
+void sendLoRaData(UINT8_T data[], UINT8_T size) {
     UINT8_T txBuffer[256];
     
-    strcpy((char*)txBuffer, (char*)data);               // load txBuffer with content of data
+    //strcpy((char*)txBuffer, (char*)data);               // load txBuffer with content of data
+    
+    for (UINT8_T i = 0; i < size; i++) {
+        txBuffer[i] = data[i];         // load FIFO with data to transmit  
+    }
 
     // load FIFO with data to transmit
     WriteSXRegister(REG_FIFO_ADDR_PTR, ReadSXRegister(REG_FIFO_TX_BASE_ADDR));      // FifiAddrPtr takes value of FifoTxBaseAddr
-    WriteSXRegister(REG_PAYLOAD_LENGTH_LORA, PAYLOAD_LENGTH);                       // set the number of bytes to transmit (PAYLOAD_LENGTH is defined in RF_LoRa868_SO.h)
+    WriteSXRegister(REG_PAYLOAD_LENGTH_LORA, size);                       // set the number of bytes to transmit (PAYLOAD_LENGTH is defined in RF_LoRa868_SO.h)
 
-    for (UINT8_T i = 0; i < PAYLOAD_LENGTH; i++) {
+    for (UINT8_T i = 0; i < size; i++) {
         WriteSXRegister(REG_FIFO, txBuffer[i]);         // load FIFO with data to transmit  
     }
 

@@ -12,7 +12,7 @@ const discoverSend askForId(void) {
 	ds.protocol[0] = 0x00;
 	ds.protocol[1] = 0x01;
 
-	ds.messageType = 0x02;
+	ds.messageType = 0x01;
 
 	ds.messageNumber = 0xc0;
 

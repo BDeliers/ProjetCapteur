@@ -90,9 +90,9 @@ int main(int argc, char** argv) {
     
     initLoRaTx();
     
-    sendLoRaData(txMsg);
+    sendLoRaData(txMsg, 10);
         
-    sendLoRaData(txMsg1);
+    //sendLoRaData(txMsg1, 11);
     
     Sleep();
 
