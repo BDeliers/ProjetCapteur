@@ -180,9 +180,7 @@ int main(int argc, char** argv) {
         
         // Ask for an ID
         discoverSend ds = askForId();
-        //UINT8_T discover[10] = {ds.identification[0], ds.identification[1], ds.protocol[0], ds.protocol[1], ds.messageType, ds.messageNumber, ds.componentType[0], ds.componentType[1], ds.version[0], ds.version[1]};
-        UINT8_T discover[10] = {0x42, 0x26, 0x00, 0x01, 0x01, 0xc0, 0x00, 0x01, 0x00, 0x01};
-        Nop();
+        UINT8_T discover[10] = {ds.identification[0], ds.identification[1], ds.protocol[0], ds.protocol[1], ds.messageType, ds.messageNumber, ds.componentType[0], ds.componentType[1], ds.version[0], ds.version[1]};
         
         // Send it
         UARTWriteStrLn("Send ID request");
@@ -298,7 +296,7 @@ int main(int argc, char** argv) {
     configSensor(0x00, 0x00,0x00);
     measure = readLuminosity(0x04);
     measure = luxConversion(measure);
-    
+        
     
     // Measure battery
     UARTWriteStrLn("Measuring battery");
@@ -323,7 +321,7 @@ int main(int argc, char** argv) {
     // Number of sending retries
     UINT8_T retries = 0;
     
-    while(retries < nRetries) {
+    while(retries < nRetries+1) {
         UARTWriteStrLn("Sending statement");
         
         // Send statement
