@@ -314,16 +314,18 @@
 "28 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_TX.X/commLora.c
 [v _sendLoRaData sendLoRaData `(v  1 e 1 0 ]
 {
-"41
-[v sendLoRaData@i_763 i `uc  1 a 1 11 ]
-"33
-[v sendLoRaData@i i `uc  1 a 1 12 ]
+"42
+[v sendLoRaData@i_764 i `uc  1 a 1 12 ]
+"34
+[v sendLoRaData@i i `uc  1 a 1 13 ]
 "29
 [v sendLoRaData@txBuffer txBuffer `[256]uc  1 a 256 0 ]
+"30
+[v sendLoRaData@reg_val reg_val `uc  1 a 1 11 ]
 "28
 [v sendLoRaData@data data `*.39uc  1 p 2 7 ]
 [v sendLoRaData@size size `uc  1 p 1 9 ]
-"54
+"64
 } 0
 "28 /home/bdeliers/MEGA/ISEN/CIR3/Projet_Systemes_Embarques/Code_Projet/Prog_Test_LoRa_TX.X/SX1272.c
 [v _ReadSXRegister ReadSXRegister `(uc  1 e 1 0 ]

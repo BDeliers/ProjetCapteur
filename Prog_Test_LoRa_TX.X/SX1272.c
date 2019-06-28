@@ -42,8 +42,8 @@ void InitModule (void){
   WriteSXRegister(REG_FIFO, 0x00);
 
   WriteSXRegister(REG_FRF_MSB, 0xD8); // center freq = MHz
-  WriteSXRegister(REG_FRF_MID, 0x99);
-  WriteSXRegister(REG_FRF_LSB, 0x99);
+  WriteSXRegister(REG_FRF_MID, 0x4C);
+  WriteSXRegister(REG_FRF_LSB, 0xCC);
 
   // writeRegisterREG_PA_CONFIG when out=RFIO
   //pout = (POUT + 1) & 0x0f;       // compute pout and keep 4 LSBs

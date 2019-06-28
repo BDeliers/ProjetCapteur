@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v2.00/pic/dat/en_msgs.txt -cs \
   -h+dist/default/production/Prog_Test_LoRa_TX.X.production.sym \
   --cmf=dist/default/production/Prog_Test_LoRa_TX.X.production.cmf -z \
-  -Q18F26K22 -o/tmp/xcXM46chb --defsym=__MPLAB_BUILD=1 \
+  -Q18F26K22 -o/tmp/xcXNnqw7s --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Prog_Test_LoRa_TX.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=0200h-0f37h -pstack=STACK -ACODE=00h-0FFFFh \
   -ACONST=00h-0FFFFh -ASMALLCONST=01000h-010FFhx240 \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcXCSgYhT.o dist/default/production/Prog_Test_LoRa_TX.X.production.o 
+  /tmp/xcXDj95L5.o dist/default/production/Prog_Test_LoRa_TX.X.production.o 
 
 Object code version is 3.11
 
@@ -38,50 +38,50 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcXCSgYhT.o
+/tmp/xcXDj95L5.o
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production/Prog_Test_LoRa_TX.X.production.o
-                text13                             FC9A     FC9A       40     7E4D       0
-                text12                             FBB8     FBB8       16     7DDC       0
-                text11                             FC28     FC28       24     7E14       0
-                text10                             FBCE     FBCE       1A     7DE7       0
-                text9                              FF08     FF08       F8     7F84       0
-                text8                              FB96     FB96       10     7DCB       0
-                text7                              FC72     FC72       28     7E39       0
-                text6                              FBE8     FBE8       1E     7DF4       0
-                text5                              FCDA     FCDA       44     7E6D       0
-                text4                              FD1E     FD1E       44     7E8F       0
-                text3                              FC4C     FC4C       26     7E26       0
-                text2                              FC06     FC06       22     7E03       0
-                text1                              FE34     FE34       D4     7F1A       0
-                text0                              FD62     FD62       D2     7EB1       0
+                text13                             FC60     FC60       40     7E30       0
+                text12                             FB7E     FB7E       16     7DBF       0
+                text11                             FBEE     FBEE       24     7DF7       0
+                text10                             FB94     FB94       1A     7DCA       0
+                text9                              FDFA     FDFA       F8     7EFD       0
+                text8                              FB5C     FB5C       10     7DAE       0
+                text7                              FC38     FC38       28     7E1C       0
+                text6                              FBAE     FBAE       1E     7DD7       0
+                text5                              FCA0     FCA0       44     7E50       0
+                text4                              FCE4     FCE4       44     7E72       0
+                text3                              FC12     FC12       26     7E09       0
+                text2                              FBCC     FBCC       22     7DE6       0
+                text1                              FEF2     FEF2      10E     7F79       0
+                text0                              FD28     FD28       D2     7E94       0
                 cstackCOMRAM                          1        1       45        1       1
                 cstackBANK1                         100      100      100      100       1
                 bssCOMRAM                            46       46       15        1       1
-                cinit                              FBA6     FBA6       12     7DD3       0
+                cinit                              FB6C     FB6C       12     7DB6       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text13                             FC9A     FC9A       40         0
-                text12                             FBB8     FBB8       16         0
-                text11                             FC28     FC28       24         0
-                text10                             FBCE     FBCE       1A         0
-                text9                              FF08     FF08       F8         0
-                text8                              FB96     FB96       10         0
-                text7                              FC72     FC72       28         0
-                text6                              FBE8     FBE8       1E         0
-                text5                              FCDA     FCDA       44         0
-                text4                              FD1E     FD1E       44         0
-                text3                              FC4C     FC4C       26         0
-                text2                              FC06     FC06       22         0
-                text1                              FE34     FE34       D4         0
-                text0                              FD62     FD62       D2         0
-                cinit                              FBA6     FBA6       12         0
+                text13                             FC60     FC60       40         0
+                text12                             FB7E     FB7E       16         0
+                text11                             FBEE     FBEE       24         0
+                text10                             FB94     FB94       1A         0
+                text9                              FDFA     FDFA       F8         0
+                text8                              FB5C     FB5C       10         0
+                text7                              FC38     FC38       28         0
+                text6                              FBAE     FBAE       1E         0
+                text5                              FCA0     FCA0       44         0
+                text4                              FCE4     FCE4       44         0
+                text3                              FC12     FC12       26         0
+                text2                              FBCC     FBCC       22         0
+                text1                              FEF2     FEF2      10E         0
+                text0                              FD28     FD28       D2         0
+                cinit                              FB6C     FB6C       12         0
 
         CLASS   CONST          
 
@@ -151,21 +151,21 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 cstackCOMRAM                   000001  00005A  00005B         1       1  COMRAM  
                 cstackBANK1                    000100  000100  000200       100       1  BANK1   
-                text8                          00FB96  000010  00FBA6      7DCB       0  CODE    
-                cinit                          00FBA6  000012  00FBB8      7DD3       0  CODE    
-                text12                         00FBB8  000016  00FBCE      7DDC       0  CODE    
-                text10                         00FBCE  00001A  00FBE8      7DE7       0  CODE    
-                text6                          00FBE8  00001E  00FC06      7DF4       0  CODE    
-                text2                          00FC06  000022  00FC28      7E03       0  CODE    
-                text11                         00FC28  000024  00FC4C      7E14       0  CODE    
-                text3                          00FC4C  000026  00FC72      7E26       0  CODE    
-                text7                          00FC72  000028  00FC9A      7E39       0  CODE    
-                text13                         00FC9A  000040  00FCDA      7E4D       0  CODE    
-                text5                          00FCDA  000044  00FD1E      7E6D       0  CODE    
-                text4                          00FD1E  000044  00FD62      7E8F       0  CODE    
-                text0                          00FD62  0000D2  00FE34      7EB1       0  CODE    
-                text1                          00FE34  0000D4  00FF08      7F1A       0  CODE    
-                text9                          00FF08  0000F8  010000      7F84       0  CODE    
+                text8                          00FB5C  000010  00FB6C      7DAE       0  CODE    
+                cinit                          00FB6C  000012  00FB7E      7DB6       0  CODE    
+                text12                         00FB7E  000016  00FB94      7DBF       0  CODE    
+                text10                         00FB94  00001A  00FBAE      7DCA       0  CODE    
+                text6                          00FBAE  00001E  00FBCC      7DD7       0  CODE    
+                text2                          00FBCC  000022  00FBEE      7DE6       0  CODE    
+                text11                         00FBEE  000024  00FC12      7DF7       0  CODE    
+                text3                          00FC12  000026  00FC38      7E09       0  CODE    
+                text7                          00FC38  000028  00FC60      7E1C       0  CODE    
+                text13                         00FC60  000040  00FCA0      7E30       0  CODE    
+                text5                          00FCA0  000044  00FCE4      7E50       0  CODE    
+                text4                          00FCE4  000044  00FD28      7E72       0  CODE    
+                text0                          00FD28  0000D2  00FDFA      7E94       0  CODE    
+                text9                          00FDFA  0000F8  00FEF2      7EFD       0  CODE    
+                text1                          00FEF2  00010E  010000      7F79       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -190,15 +190,15 @@ UNUSED ADDRESS RANGES
         BANK9            000900-0009FF              100
         BIGRAM           00005B-0000FF               A5
                          000200-000F37              D38
-        CODE             000004-00FB95             FB92
+        CODE             000004-00FB5B             FB58
         COMRAM           00005B-00005F                5
-        CONST            000004-00FB95             FB92
+        CONST            000004-00FB5B             FB58
         EEDATA           F00000-F003FF              400
-        MEDIUMCONST      001000-00FB95             EB96
+        MEDIUMCONST      001000-00FB5B             EB5C
         RAM              000060-0000FF               A0
                          000200-000F37              100
         SFR              000F38-000FFF               28
-        SMALLCONST       001000-00FB95              100
+        SMALLCONST       001000-00FB5B              100
         STACK            000200-000F37              D38
 
                                   Symbol Table
@@ -217,23 +217,23 @@ WriteSXRegister@address   cstackCOMRAM 000007
 WriteSXRegister@data      cstackCOMRAM 000006
 _ANSELBbits               (abs)        000F39
 _ANSELCbits               (abs)        000F3A
-_AntennaTX                text12       00FBB8
-_InitModule               text9        00FF08
-_InitRFLoRaPins           text8        00FB96
+_AntennaTX                text12       00FB7E
+_InitModule               text9        00FDFA
+_InitRFLoRaPins           text8        00FB5C
 _LATBbits                 (abs)        000F8A
 _LATCbits                 (abs)        000F8B
 _PIR3bits                 (abs)        000FA4
-_ReadSXRegister           text2        00FC06
-_ResetRFModule            text7        00FC72
-_SPIInit                  text6        00FBE8
-_SPIReceive               text3        00FC4C
-_SPITransfer              text11       00FC28
+_ReadSXRegister           text2        00FBCC
+_ResetRFModule            text7        00FC38
+_SPIInit                  text6        00FBAE
+_SPIReceive               text3        00FC12
+_SPITransfer              text11       00FBEE
 _SSP2BUF                  (abs)        000F6F
 _SSP2CON1                 (abs)        000F6C
 _SSP2STATbits             (abs)        000F6D
 _TRISBbits                (abs)        000F93
 _TRISCbits                (abs)        000F94
-_WriteSXRegister          text10       00FBCE
+_WriteSXRegister          text10       00FB94
 __CFG_BOREN$SBORDIS       (abs)        000000
 __CFG_BORV$190            (abs)        000000
 __CFG_CCP2MX$PORTC1       (abs)        000000
@@ -446,41 +446,41 @@ ___rparam_used            (abs)        000001
 ___sp                     stack        000000
 __accesstop               (abs)        000060
 __activetblptr            (abs)        000000
-__end_of_AntennaTX        text12       00FBCE
-__end_of_InitModule       text9        010000
-__end_of_InitRFLoRaPins   text8        00FBA6
-__end_of_ReadSXRegister   text2        00FC28
-__end_of_ResetRFModule    text7        00FC9A
-__end_of_SPIInit          text6        00FC06
-__end_of_SPIReceive       text3        00FC72
-__end_of_SPITransfer      text11       00FC4C
-__end_of_WriteSXRegister  text10       00FBE8
-__end_of__initialization  cinit        00FBB2
-__end_of_askForId         text13       00FCDA
-__end_of_initLoRaTx       text5        00FD1E
-__end_of_main             text0        00FE34
-__end_of_sendData         text4        00FD62
-__end_of_sendLoRaData     text1        00FF08
-__initialization          cinit        00FBA6
+__end_of_AntennaTX        text12       00FB94
+__end_of_InitModule       text9        00FEF2
+__end_of_InitRFLoRaPins   text8        00FB6C
+__end_of_ReadSXRegister   text2        00FBEE
+__end_of_ResetRFModule    text7        00FC60
+__end_of_SPIInit          text6        00FBCC
+__end_of_SPIReceive       text3        00FC38
+__end_of_SPITransfer      text11       00FC12
+__end_of_WriteSXRegister  text10       00FBAE
+__end_of__initialization  cinit        00FB78
+__end_of_askForId         text13       00FCA0
+__end_of_initLoRaTx       text5        00FCE4
+__end_of_main             text0        00FDFA
+__end_of_sendData         text4        00FD28
+__end_of_sendLoRaData     text1        010000
+__initialization          cinit        00FB6C
 __mediumconst             mediumconst  000000
 __pbssCOMRAM              bssCOMRAM    000046
-__pcinit                  cinit        00FBA6
+__pcinit                  cinit        00FB6C
 __pcstackBANK1            cstackBANK1  000100
 __pcstackCOMRAM           cstackCOMRAM 000001
-__ptext0                  text0        00FD62
-__ptext1                  text1        00FE34
-__ptext10                 text10       00FBCE
-__ptext11                 text11       00FC28
-__ptext12                 text12       00FBB8
-__ptext13                 text13       00FC9A
-__ptext2                  text2        00FC06
-__ptext3                  text3        00FC4C
-__ptext4                  text4        00FD1E
-__ptext5                  text5        00FCDA
-__ptext6                  text6        00FBE8
-__ptext7                  text7        00FC72
-__ptext8                  text8        00FB96
-__ptext9                  text9        00FF08
+__ptext0                  text0        00FD28
+__ptext1                  text1        00FEF2
+__ptext10                 text10       00FB94
+__ptext11                 text11       00FBEE
+__ptext12                 text12       00FB7E
+__ptext13                 text13       00FC60
+__ptext2                  text2        00FBCC
+__ptext3                  text3        00FC12
+__ptext4                  text4        00FCE4
+__ptext5                  text5        00FCA0
+__ptext6                  text6        00FBAE
+__ptext7                  text7        00FC38
+__ptext8                  text8        00FB5C
+__ptext9                  text9        00FDFA
 __ramtop                  ramtop       001000
 __size_of_AntennaTX       (abs)        000000
 __size_of_InitModule      (abs)        000000
@@ -497,13 +497,13 @@ __size_of_main            (abs)        000000
 __size_of_sendData        (abs)        000000
 __size_of_sendLoRaData    (abs)        000000
 __smallconst              smallconst   000000
-_askForId                 text13       00FC9A
-_initLoRaTx               text5        00FCDA
-_main                     text0        00FD62
-_sendData                 text4        00FD1E
-_sendLoRaData             text1        00FE34
+_askForId                 text13       00FC60
+_initLoRaTx               text5        00FCA0
+_main                     text0        00FD28
+_sendData                 text4        00FCE4
+_sendLoRaData             text1        00FEF2
 askForId@ds               cstackCOMRAM 00000B
-end_of_initialization     cinit        00FBB2
+end_of_initialization     cinit        00FB78
 intlevel0                 text         000000
 intlevel1                 text         000000
 intlevel2                 text         000000
@@ -520,14 +520,15 @@ sendData@id               cstackCOMRAM 000001
 sendData@messageNumber    cstackCOMRAM 000003
 sendData@ss               cstackCOMRAM 00000C
 sendLoRaData@data         cstackCOMRAM 000008
-sendLoRaData@i            cstackCOMRAM 00000D
-sendLoRaData@i_763        cstackCOMRAM 00000C
+sendLoRaData@i            cstackCOMRAM 00000E
+sendLoRaData@i_764        cstackCOMRAM 00000D
+sendLoRaData@reg_val      cstackCOMRAM 00000C
 sendLoRaData@size         cstackCOMRAM 00000A
 sendLoRaData@txBuffer     cstackBANK1  000100
 stackhi                   (abs)        000F37
 stacklo                   (abs)        000200
 start                     init         000000
-start_initialization      cinit        00FBA6
+start_initialization      cinit        00FB6C
 
 
 FUNCTION INFORMATION:
@@ -576,9 +577,10 @@ Total ram usage:       47 bytes
 		 -> main@txMsg(10), 
   size            1    9[COMRAM] unsigned char 
  Auto vars:     Size  Location     Type
-  i               1   11[COMRAM] unsigned char 
   i               1   12[COMRAM] unsigned char 
+  i               1   13[COMRAM] unsigned char 
   txBuffer      256    0[BANK1 ] unsigned char [256]
+  reg_val         1   11[COMRAM] unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -589,10 +591,10 @@ Total ram usage:       47 bytes
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
       Params:         3       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Locals:         2       0     256       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         3       0     256       0       0       0       0       0       0       0       0       0       0       0       0       0       0
       Temps:          1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Totals:         6       0     256       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-Total ram usage:      262 bytes
+      Totals:         7       0     256       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:      263 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    2
  This function calls:
@@ -977,45 +979,45 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 commLora.c
-		_sendLoRaData  		CODE           	FE34	0000	213
-		_initLoRaTx    		CODE           	FCDA	0000	69
+		_sendLoRaData  		CODE           	FEF2	0000	271
+		_initLoRaTx    		CODE           	FCA0	0000	69
 
-commLora.c estimated size: 282
+commLora.c estimated size: 340
 
 messageParser.c
-		_sendData      		CODE           	FD1E	0000	69
-		_askForId      		CODE           	FC9A	0000	65
+		_sendData      		CODE           	FCE4	0000	69
+		_askForId      		CODE           	FC60	0000	65
 
 messageParser.c estimated size: 134
 
 SX1272.c
-		_ReadSXRegister		CODE           	FC06	0000	35
-		_InitModule    		CODE           	FF08	0000	249
-		_WriteSXRegister		CODE           	FBCE	0000	27
+		_ReadSXRegister		CODE           	FBCC	0000	35
+		_InitModule    		CODE           	FDFA	0000	249
+		_WriteSXRegister		CODE           	FB94	0000	27
 
 SX1272.c estimated size: 311
 
 spi.c
-		_SPITransfer   		CODE           	FC28	0000	37
-		_SPIReceive    		CODE           	FC4C	0000	39
-		_SPIInit       		CODE           	FBE8	0000	31
+		_SPITransfer   		CODE           	FBEE	0000	37
+		_SPIReceive    		CODE           	FC12	0000	39
+		_SPIInit       		CODE           	FBAE	0000	31
 
 spi.c estimated size: 107
 
 shared
-		__initialization		CODE           	FBA6	0000	13
+		__initialization		CODE           	FB6C	0000	13
 
 shared estimated size: 13
 
 RF_LoRa_868_SO.c
-		_ResetRFModule 		CODE           	FC72	0000	41
-		_AntennaTX     		CODE           	FBB8	0000	23
-		_InitRFLoRaPins		CODE           	FB96	0000	17
+		_ResetRFModule 		CODE           	FC38	0000	41
+		_AntennaTX     		CODE           	FB7E	0000	23
+		_InitRFLoRaPins		CODE           	FB5C	0000	17
 
 RF_LoRa_868_SO.c estimated size: 81
 
 TX_LoRa.c
-		_main          		CODE           	FD62	0000	211
+		_main          		CODE           	FD28	0000	211
 
 TX_LoRa.c estimated size: 211
 

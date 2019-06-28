@@ -27,6 +27,7 @@ void initLoRaTx() {
 
 void sendLoRaData(UINT8_T data[], UINT8_T size) {
     UINT8_T txBuffer[256];
+    UINT8_T reg_val;
     
     //strcpy((char*)txBuffer, (char*)data);               // load txBuffer with content of data
     
@@ -46,6 +47,15 @@ void sendLoRaData(UINT8_T data[], UINT8_T size) {
     // Set mode to LoRa TX
     WriteSXRegister(REG_OP_MODE, LORA_TX_MODE);
     __delay_ms(100);                                    // delay required to start oscillator and PLL
+    
+    // wait end of transmission
+    reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+    while ((reg_val & 0x08) == 0x00) {                    // wait for end of transmission (wait until TxDone is set)
+        reg_val = ReadSXRegister(REG_IRQ_FLAGS);
+    }
+    
+
+    __delay_ms(200);
 
     WriteSXRegister(REG_IRQ_FLAGS, 0xFF);           // clear flags: writing 1 clears flag
 

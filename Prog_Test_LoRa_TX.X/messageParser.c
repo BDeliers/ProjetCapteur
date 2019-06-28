@@ -9,18 +9,18 @@ const discoverSend askForId(void) {
 	ds.identification[0] = 0x42;
 	ds.identification[1] = 0x26;
 
-	ds.protocol[0] = 0x00;
-	ds.protocol[1] = 0x01;
+	ds.protocol[0] = 0x27;
+	ds.protocol[1] = 0x28;
 
-	ds.messageType = 0x01;
+	ds.messageType = 0x29;
 
-	ds.messageNumber = 0xc0;
+	ds.messageNumber = 0x30;
 
-	ds.componentType[0] = 0x00;
-	ds.componentType[1] = 0x01;
+	ds.componentType[0] = 0x31;
+	ds.componentType[1] = 0x32;
 
-	ds.version[0] = 0x00;
-	ds.version[1] = 0x01;
+	ds.version[0] = 0x33;
+	ds.version[1] = 0x34;
 
 	return ds;
 }
