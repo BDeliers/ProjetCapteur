@@ -122,20 +122,21 @@ int main(int argc, char** argv) {
     UARTInit(19200);
     UARTWriteStrLn("Starting main code");    
     
-    // Reset watchdog
-    WDTCONbits.SWDTEN = CLEAR;
-    
     UARTWriteStrLn("Blink LED");    
     // Blink LED for start
     LED_DIR = OUTP;
     LED_STATE = ON;
     
-    UARTWriteStrLn("Resetting configured register");
-    eepromWriteData(0x00, 0x00, 0x00);
+    //UARTWriteStrLn("Resetting configured register");
+    //eepromWriteData(0x00, 0x00, 0x00);
     
     // If we resume thanks to watchdog
     if(!RCONbits.TO) {
         UARTWriteStrLn("Resumed by Watchdog");
+        UARTWriteStrLn("Nwakes = ");
+        
+        UARTWriteByteDec(nWakes);
+        
         
         // Get sleep time in EEPROM
         UINT8_T sleepMsb = eepromReadData(0x00, 0x03);
@@ -143,7 +144,7 @@ int main(int argc, char** argv) {
         UINT16_T sleepFull = ((UINT16_T) sleepMsb << 8) | sleepLsb;
         
         // If we're supposed to sleep again
-        if(nWakes < sleepFull - 2) {
+        while(nWakes < 3) {
             UARTWriteStrLn("Get back to sleep");
             
             nWakes = nWakes+1;
@@ -151,15 +152,21 @@ int main(int argc, char** argv) {
             // Sleep until watchdog wakes up
             ClrWdt();
             WDTCONbits.SWDTEN = SET;
+            
+            LED_STATE = OFF;
 
             Sleep();
-        }
-        // Else
-        else {            
-            nWakes = 0;
-            UARTWriteStrLn("Wake up");
-        }
+            Nop();
+        }          
+        
+        nWakes = 0;
+        UARTWriteStrLn("Wake up");
+        
+        LED_STATE = ON;
     }
+    
+    // Reset watchdog
+    WDTCONbits.SWDTEN = CLEAR;
     
     // Check if we already have an ID
     UINT8_T configured = eepromReadData(0x00, 0x00);
@@ -321,7 +328,11 @@ int main(int argc, char** argv) {
     // Number of sending retries
     UINT8_T retries = 0;
     
-    while(retries < nRetries+1) {
+    UINT8_T breakme = 0;
+    
+    while(retries < nRetries+1 && breakme == 0) {
+        breakme = 0;
+        
         UARTWriteStrLn("Sending statement");
         
         // Send statement
@@ -394,6 +405,7 @@ int main(int argc, char** argv) {
 
                         // Exit both whiles
                         retries = nRetries;
+                        breakme = 1;
                         break;
                     }
                 }
